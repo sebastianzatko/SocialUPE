@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="includes/js/jquery-3.3.1.min.js" ></script>
+		<link rel="stylesheet" href="includes/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="includes/js/bootstrap.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+		<script type="application/javascript" src="includes/js/notify.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+		
+		<link rel="stylesheet" href="includes/css/home.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-primary">
+		  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navegacion">
+			<a class="navbar-brand" href="#">SocialUPE</a>
+			<button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarColor02">
+			  
+			  <form class="form-inline">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+			  </form>
+			   
+			   
+			   <ul class="navbar-nav mr-auto pull-right">
+				<li class="nav-item active">
+				  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#">Features</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#">Pricing</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#">About</a>
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			  </li>
+			  </ul>
+			   
+			</div>
+		  </nav>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 d-sm-none d-none d-md-block">
+					<div class="card" style="width: 18rem;">
+					  <img class="card-img-top" src="files/images/default.png" alt="Card image cap">
+					  <div class="card-body">
+						<h5 class="card-title">Sebastian Castellanos</h5>
+						<p class="card-text">sebastiancastellanos@mail.com</p>
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item"><a href="#" class="card-link">Mis Grupos</a></li>
+						<li class="list-group-item"><a href="#" class="card-link">Salir</a></li>
+						
+					  </ul>
+					</div>
+				</div>
+				<div class="col-md-8 principal">
+					
+					
+					
+					<div class="row hija">
+						<div class="card">
+						  <div class="card-header">
+							
+							<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+							
+							
+							<b>Carla Pavon</b> <i class="fas fa-arrow-right"></i> <a href=""><b>Matematica 3</b></a>
+						  </div>
+						  <div class="card-body">
+							<div class="pull-right">19/03/2017</div>
+							<p class="card-text">Tenemos clases el lunes?</p>
+							
+						  </div>
+						  <ul class="list-group list-group-flush">
+							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Sandro Juan</b> Creo que si <div class="pull-right">19/03/2017</div></li>
+							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Laura Usaura</b> Buenas, efectivamente tenemos clases <div class="pull-right">19/03/2017</div></li>
+							<li class="list-group-item">
+								<form>
+								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+								<div class="pull-right"><input type="submit" class="btn btn-primary pull-right" value="Comentar" id="publicarestado"/></div>
+								</form>
+							</li>
+						  </ul>
+						</div>
+					</div>
+					<div class="row hija">
+						<div class="card">
+						  <div class="card-header">
+							<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+							
+							
+							<b>Juan Garrido</b> <i class="fas fa-arrow-right"></i> <a href=""><b>Seguridad e higiene</b></a>
+						  </div>
+						  <div class="card-body">
+							<div class="pull-right">19/03/2017</div>
+							<h5 class="card-title">Ha subido un nuevo archivo</h5>
+							<a href="#"><div class="archivo"><p class="card-text"><i class="far fa-file fa-3x"></i> Introduccion seguridad e higiene.rar</p></div></a>
+						  </div>
+						  <ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<form>
+								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+								<div class="pull-right"><input type="submit" class="btn btn-primary pull-right" value="Comentar" id="publicarestado"/></div>
+								</form>
+							</li>
+						  </ul>
+						</div>
+					</div>
+					<div class="row hija">
+						<div class="card">
+						  <div class="card-header">
+							<img src="files/images/logo.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+							
+							
+							Universidad de Ezeiza
+						  </div>
+						  <div class="card-body">
+							<div class="pull-right">19/03/2017</div>
+							<p class="card-text">Por falta de electricidad se suspenden las clases de hoy.</p>
+							
+						  </div>
+						  <ul class="list-group list-group-flush">
+							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Sandro Juan</b> Siempre lo mismo <div class="pull-right">19/03/2017</div></li>
+							
+							<li class="list-group-item">
+								<form>
+								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+								<div class="pull-right"><input type="submit" class="btn btn-primary pull-right" value="Comentar" id="publicarestado"/></div>
+								</form>
+							</li>
+						  </ul>
+						</div>
+					</div>
+					
+				
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

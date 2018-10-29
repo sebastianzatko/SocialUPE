@@ -1,0 +1,48 @@
+a{
+    color:#47649F;
+}
+
+body{
+    font-family:'helvetica';    
+}
+
+/*-- Bootstrap Override Style --*/
+
+
+/*-- Content Style --*/
+#publicarestado{
+	margin-bottom:5px;
+	margin-top:3px;
+}
+
+.principal .row .card{
+	width:100%;
+}
+
+.hija{
+	margin-bottom :10px;
+}
+
+.pull-right{
+	float:right;
+}
+
+#navegacion{
+	width:100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.profilepic{
+	width:50px;
+	height:50px;
+}
+
+.archivo{
+	padding: 1.25rem;
+	background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
