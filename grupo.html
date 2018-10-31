@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="includes/js/jquery-3.3.1.min.js" ></script>
@@ -15,17 +16,19 @@
 	<body>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary " role="navigation">
 									
-					<a class="navbar-brand" href="#">SocialUPE</a>
+					<a class="navbar-brand" href="home.html">SocialUPE</a>
 					<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
 						&#9776;
 					</button>
 					<div class="collapse navbar-collapse" id="exCollapsingNavbar">
 						<ul class="nav navbar-nav">
-							<li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>
-							<form class="form-inline">
+							<!--<li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>-->
+							<!--<form class="form-inline">-->
+								<div class="form-inline">
 									<input class="form-control mr-sm-2" type="search" placeholder="Buscar Grupos" aria-label="Buscar Grupos">
-									<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
-							</form>
+									<button class="btn btn-outline-light my-2 my-sm-0" onclick="location.href = 'search.html';" type="submit">Buscar</button>
+								</div>
+							<!--</form>-->
 
 						</ul>
 						<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -33,11 +36,22 @@
 							<li class="dropdown order-1">
 								<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle text-white">Opciones <span class="caret"></span></button>
 								<ul class="dropdown-menu dropdown-menu-right mt-2">
+									<li class="px-3 py-2">
+									
+										 <a href="users.html">Usuarios</a>
+					
+									</li>
+									<li class="px-3 py-2">
+									
+										 <a href="newgroup.html">Crear Grupo</a>
+					
+									</li>
 									 <li class="px-3 py-2">
-
+									
 										 <a href="">Cerrar Sesion</a>
 					
 									</li>
+									
 								</ul>
 							</li>
 						</ul>
@@ -50,7 +64,7 @@
 			<div class="row">
 			<div class="row hija">
 			
-				<div class="col-md-4 d-sm-none d-none d-md-block">
+				<div class="col-md-5 d-sm-none d-none d-md-block">
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 						<h5 class="card-title">Archivos (4)</h5>
@@ -66,15 +80,40 @@
 						</li>
 					  </ul>
 					</div>
+					<div class="card hija" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Miembros (6)</h5>
+						
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b><span class="unhiglight">(Profesor)</span></li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar alumnos</button></li>
+					  </ul>
+					</div>
+					<div class="card hija" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Solicitudes</h5>
+						
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Susana Villaveloz</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger pull-right"><i class="fas fa-ban"></i> Rechazar</button></li>
+						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Fernando Lapida</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger pull-right"><i class="fas fa-ban"></i> Rechazar</button></li>
+					  </ul>
+					</div>
 				</div>
 				
 				
-				<div class="col-md-5 principal">
+				<div class="col-md-7 principal">
 				
 					<div class="row hija">
 						<div class="card">
 							<div class="card-body">
-								<h2 class="card-title">Seguridad e Higiene</h2>
+								<center><h2 class="card-title">Seguridad e Higiene</h2></center>
 							</div>
 						</div>
 					</div>
@@ -100,13 +139,14 @@
 							
 							
 							<b>Juan Garrido</b>
+							<span class="unhiglight pull-right">19/03/2017</span>
 						  </div>
 						  <div class="card-body">
-							<div class="pull-right">19/03/2017</div>
+							<div class="pull-right"></div>
 							<h5 class="card-title">Ha subido un nuevo archivo</h5>
 							<a href="#"><div class="archivo"><p class="card-text"><i class="far fa-file fa-3x"></i> Introduccion seguridad e higiene.rar</p></div></a>
 						  </div>
-						  <ul class="list-group list-group-flush">
+						  <ul class="list-group list-group-flush comentarios">
 							<li class="list-group-item">
 								<form>
 								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
@@ -127,14 +167,15 @@
 							
 							
 							<b>Mario Casas</b>
+							<span class="unhiglight pull-right">19/03/2017</span>
 						  </div>
 						  <div class="card-body">
-							<div class="pull-right">19/03/2017</div>
+							<div class="pull-right"></div>
 							<p class="card-text">Profe no voy a poder ir el viernes</p>
 							
 						  </div>
-						  <ul class="list-group list-group-flush">
-							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Juan Garrido</b> Hablame por privado <div class="pull-right">19/03/2017</div></li>
+						  <ul class="list-group list-group-flush comentarios">
+							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Juan Garrido</b> Hablame por privado <div class="pull-right"><span class="unhiglight">19/03/2017</span></div></li>
 							<li class="list-group-item">
 								<form>
 								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
@@ -153,13 +194,14 @@
 							
 							
 							<b>Juan Garrido</b>
+							<span class="unhiglight pull-right">19/03/2017</span>
 						  </div>
 						  <div class="card-body">
-							<div class="pull-right">19/03/2017</div>
+							<div class="pull-right"></div>
 							<p class="card-text">Estimados en los proximos dias estare subiendo un archivo con la introduccion a la materia</p>
 							
 						  </div>
-						  <ul class="list-group list-group-flush">
+						  <ul class="list-group list-group-flush comentarios">
 							<li class="list-group-item">
 								<form>
 								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
@@ -173,33 +215,7 @@
 				</div>
 				
 				
-				<div class="col-md-2 d-sm-none d-none d-md-block">
-					<div class="card hija" style="width: 18rem;">
-					  <div class="card-body">
-						<h5 class="card-title">Miembros (6)</h5>
-						
-					  </div>
-					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b>(Profesor)</li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b>(Alumno)</li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b>(Alumno)</li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b>(Alumno)</li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b>(Alumno)</li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b>(Alumno)</li>
-						<li class="list-group-item"><button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar alumnos</button></li>
-					  </ul>
-					</div>
-					<div class="card hija" style="width: 18rem;">
-					  <div class="card-body">
-						<h5 class="card-title">Solicitudes</h5>
-						
-					  </div>
-					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Susana Villaveloz</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Rechazar</button></li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Fernando Lapida</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Rechazar</button></li>
-					  </ul>
-					</div>
-				</div>
+				
 				
 				
 			</div>

@@ -2,8 +2,13 @@ a{
     color:#47649F;
 }
 
+h2,h3,h4,h5,h6{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
 body{
     font-family:'helvetica';    
+	background-color:#F7F3F3;
 }
 
 /*-- Bootstrap Override Style --*/
@@ -68,4 +73,17 @@ input[type="file"] {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+}
+
+.comentarios li{
+	background-color:#D5E2E7;
+	font-size:12px;
+}
+
+.list-group-item{
+	padding:5px;
+}
+
+.unhiglight{
+	color:#737373;
 }

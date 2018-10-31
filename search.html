@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="includes/js/jquery-3.3.1.min.js" ></script>
@@ -15,17 +16,19 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary " role="navigation">
 									
-					<a class="navbar-brand" href="#">SocialUPE</a>
+					<a class="navbar-brand" href="home.html">SocialUPE</a>
 					<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
 						&#9776;
 					</button>
 					<div class="collapse navbar-collapse" id="exCollapsingNavbar">
 						<ul class="nav navbar-nav">
-							<li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>
-							<form class="form-inline">
+							<!--<li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>-->
+							<!--<form class="form-inline">-->
+								<div class="form-inline">
 									<input class="form-control mr-sm-2" type="search" placeholder="Buscar Grupos" aria-label="Buscar Grupos">
-									<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
-							</form>
+									<button class="btn btn-outline-light my-2 my-sm-0" onclick="location.href = 'search.html';" type="submit">Buscar</button>
+								</div>
+							<!--</form>-->
 
 						</ul>
 						<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -33,11 +36,22 @@
 							<li class="dropdown order-1">
 								<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle text-white">Opciones <span class="caret"></span></button>
 								<ul class="dropdown-menu dropdown-menu-right mt-2">
+									<li class="px-3 py-2">
+									
+										 <a href="users.html">Usuarios</a>
+					
+									</li>
+									<li class="px-3 py-2">
+									
+										 <a href="newgroup.html">Crear Grupo</a>
+					
+									</li>
 									 <li class="px-3 py-2">
-
+									
 										 <a href="">Cerrar Sesion</a>
 					
 									</li>
+									
 								</ul>
 							</li>
 						</ul>
@@ -50,20 +64,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 principal">
-					<a href="#" class="nodeclink"><div class="row hija">
+					<a href="grupo.html" class="nodeclink"><div class="row hija">
 						<div class="card">
 						  <div class="card-header">
-							 Fecha de creacion:19/03/2017
+							 <span class="unhiglight">Fecha de creacion: 19/03/2017</span>
 							 <div class="pull-right">
-								Profesor:<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+								<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
 								<b>Juan Garrido</b>
 							</div>
 						  </div>
 						  <div class="card-body">
 							<h3 class="card-title">Seguridad e Higierene</h3>
-							<small>Ya perteneces a este grupo</small>
+							<small class="unhiglight">Ya perteneces a este grupo</small>
 							<div class="pull-right">
-								<h5 class="card-title">Carrera:Licenciatura en Seguridad e Higierene</h5>
+								<h5 class="card-title">Licenciatura en Seguridad e Higierene</h5>
 							</div>
 						  </div>
 						</div>
@@ -72,9 +86,9 @@
 					<div class="row hija">
 						<div class="card">
 						  <div class="card-header">
-							 Fecha de creacion:19/03/2017
+							 <span class="unhiglight">Fecha de creacion: 19/03/2017</span>
 							 <div class="pull-right">
-								Profesor:<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+								<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
 								<b>Natalia Lorenza</b>
 							</div>
 						  </div>
@@ -82,7 +96,7 @@
 							<h3 class="card-title">Matematica 1</h3>
 							<button type="button" class="btn btn-success">Solicitar Acceso</button>
 							<div class="pull-right">
-								<h5 class="card-title">Carrera:Ciclo Introductorio</h5>
+								<h5 class="card-title">Ciclo Introductorio</h5>
 							</div>
 						  </div>
 						</div>
@@ -91,9 +105,9 @@
 					<div class="row hija">
 						<div class="card">
 						  <div class="card-header">
-							 Fecha de creacion:19/03/2017
+							 <span class="unhiglight">Fecha de creacion: 19/03/2017</span>
 							 <div class="pull-right">
-								Profesor:<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+								<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
 								<b>Gabriel Guzman</b>
 							</div>
 						  </div>
@@ -101,7 +115,7 @@
 							<h3 class="card-title">Fisica</h3>
 							<button type="button" class="btn btn-success">Solicitar Acceso</button>
 							<div class="pull-right">
-								<h5 class="card-title">Carrera:Ciclo Introductorio</h5>
+								<h5 class="card-title">Ciclo Introductorio</h5>
 							</div>
 						  </div>
 						</div>
@@ -110,9 +124,9 @@
 					<div class="row hija">
 						<div class="card">
 						  <div class="card-header">
-							 Fecha de creacion:19/03/2017
+							 <span class="unhiglight">Fecha de creacion: 19/03/2017</span>
 							 <div class="pull-right">
-								Profesor:<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
+								<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
 								<b>Valentin Molina</b>
 							</div>
 						  </div>
@@ -120,7 +134,7 @@
 							<h3 class="card-title">Fiestas y alimentos 1</h3>
 							<button type="button" class="btn btn-success disabled">Esperando aceptacion</button>
 							<div class="pull-right">
-								<h5 class="card-title">Carrera:Turismo y hoteleria</h5>
+								<h5 class="card-title">Turismo y hoteleria</h5>
 							</div>
 						  </div>
 						</div>
