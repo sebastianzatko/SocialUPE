@@ -14,51 +14,43 @@
 		<link rel="stylesheet" href="includes/css/home.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-dark bg-primary">
-		  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navegacion">
-			<a class="navbar-brand" href="#">SocialUPE</a>
-			<button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarColor02">
-			  
-			  <form class="form-inline">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-			  </form>
-			   
-			   
-			   <ul class="navbar-nav mr-auto pull-right">
-				<li class="nav-item active">
-				  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">Features</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">Pricing</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">About</a>
-				</li>
-				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Dropdown
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				  <a class="dropdown-item" href="#">Action</a>
-				  <a class="dropdown-item" href="#">Another action</a>
-				  <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="#">Something else here</a>
-				</div>
-			  </li>
-			  </ul>
-			   
-			</div>
-		  </nav>
-		</nav>
-		<div class="container">
+			
+			<div class="row">
+					<div class="col-md-12 col-xl-12 col-sm-12 col-lg-12">
+							<nav class="navbar navbar-expand-lg navbar-dark bg-primary" role="navigation">
+									
+										<a class="navbar-brand" href="#">Brand</a>
+										<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+											&#9776;
+										</button>
+										<div class="collapse navbar-collapse" id="exCollapsingNavbar">
+											<ul class="nav navbar-nav">
+												<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+												<form class="form-inline">
+														<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+														<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+												</form>
+	
+											</ul>
+											<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+												<li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+												<li class="dropdown order-1">
+													<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Config <span class="caret"></span></button>
+													<ul class="dropdown-menu dropdown-menu-right mt-2">
+														 <li class="px-3 py-2">
+	
+															 <a href="">Cerrar Sesion</a>
+										
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</nav>
+					</div>
+				
+					<div class="container">
 			<div class="row">
 				<div class="col-md-4 d-sm-none d-none d-md-block">
 					<div class="card" style="width: 18rem;">
@@ -158,5 +150,6 @@
 				
 			</div>
 		</div>
+	
 	</body>
 </html>

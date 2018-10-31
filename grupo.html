@@ -13,50 +13,37 @@
 		<link rel="stylesheet" href="includes/css/home.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-dark bg-primary">
-		  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navegacion">
-			<a class="navbar-brand" href="#">SocialUPE</a>
-			<button class="navbar-toggler pull-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary " role="navigation">
+									
+					<a class="navbar-brand" href="#">Brand</a>
+					<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+						&#9776;
+					</button>
+					<div class="collapse navbar-collapse" id="exCollapsingNavbar">
+						<ul class="nav navbar-nav">
+							<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+							<form class="form-inline">
+									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+									<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+							</form>
 
-			<div class="collapse navbar-collapse" id="navbarColor02">
-			  
-			  <form class="form-inline">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-			  </form>
-			   
-			   
-			   <ul class="navbar-nav mr-auto pull-right">
-				<li class="nav-item active">
-				  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">Features</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">Pricing</a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#">About</a>
-				</li>
-				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Dropdown
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				  <a class="dropdown-item" href="#">Action</a>
-				  <a class="dropdown-item" href="#">Another action</a>
-				  <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="#">Something else here</a>
+						</ul>
+						<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+							<li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+							<li class="dropdown order-1">
+								<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Config <span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right mt-2">
+									 <li class="px-3 py-2">
+
+										 <a href="">Cerrar Sesion</a>
+					
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
-			  </li>
-			  </ul>
-			   
-			</div>
-		  </nav>
-		</nav>
+			</nav>
 		
 		
 		<div class="container">
@@ -67,6 +54,7 @@
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 						<h5 class="card-title">Archivos (4)</h5>
+						<button data-toggle="modal" data-target="#Subir_Archivo" class="btn btn-success">Subir Archivo</button>
 					  </div>
 					  <ul class="list-group list-group-flush">
 						<li class="list-group-item"><a href="#"><div class="archivo card-link"><p class="card-text"><i class="far fa-file fa-2x"></i> Introduccion seguridad e higiene.rar</p></div></a></li>
@@ -186,6 +174,7 @@
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 						<h5 class="card-title">Miembros (6)</h5>
+						<button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar</button>
 					  </div>
 					  <ul class="list-group list-group-flush">
 						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b>(Profesor)</li>
@@ -202,6 +191,57 @@
 			</div>
 		</div>
 		</div>
+	
+		<div id="Invitar_Alumno" class="modal fade">
+
+		<div class="modal-dialog">
+
+				<div class="modal-content">
+								<H3>Invitar Participante</H3>
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								
+						</div>
+						<div class="modal-body">
+								<form action="" class="form-group">
+								<label for="">Ingrese Email</label>
+								<input type="email" class="form-control">
+								
+								
+
+						</div>
+						<div class="modal-footer">
+								<button  type="submit" class="btn btn-primary">Enviar Invitacion</button>
+								</form> 
+							</div>
+				</div>
+		</div>
+		</div>
 		
+				<div id="Subir_Archivo" class="modal fade">
+
+						<div class="modal-dialog">
+				
+								<div class="modal-content">
+												<H3>Subir Archivo</H3>
+										<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												
+										</div>
+										<div class="modal-body">
+												<form action="" class="form-group">
+												<input  type="file">
+												
+												
+				
+										</div>
+										<div class="modal-footer">
+												<button  type="button" class="btn btn-primary">Subir Archivo</button>
+												</form> 
+											</div>
+										</div>
+									</div>
+									</div>
+
 	</body>
 </html>
