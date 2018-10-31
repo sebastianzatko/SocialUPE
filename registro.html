@@ -7,71 +7,85 @@
     <script type="text/javascript" src="includes/js/jquery-3.3.1.min.js" ></script>
     <link rel="stylesheet" href="includes/css/bootstrap.min.css"/>
     <script type="text/javascript" src="includes/js/bootstrap.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script type="application/javascript" src="includes/js/notify.js"></script>
-    	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <script src="includes/js/registro.js"></script>
+    
     <link rel="stylesheet" href="includes/css/registro.css"/>
-	<link rel="stylesheet" href="includes/css/home.css">
     <title>Document</title>
-	
-	<link rel="stylesheet" href="includes/css/login.css"/>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h2 id="titulo"></span class="verde">---</span>Registro Alumno</span class="verde">---</span></h2>
+                <h2 id="titulo">Registro Alumno</h2>
             </div>
             <div class="col-md-2"></div>
         </div>
             <div class="row">
                     <div class="col-md-3"></div>
                         <div class="col-md-6">
-							<div class="panel panel-default casirecuadro">
-								<form action="" id="Registro" class="form-group Oculto">
-										<div class="form-group">
-											
-											<label for="">Nombre</label>
-											<input type="text" class="form-control" size="35">
-											
-			
-											<label for="">Apellido</label>
-											<input type="text" class="form-control">
-			
-											<label for="">Email</label>
-											<input class="form-control" type="email" name="" id="">
-			
-							
-			
-											<label class="titulo"  for="Tipo" >Tipo Documento</label>
-											<select name="tipoDoc" class="form-control" id="Tipo" name="Tipo" required> 
-												<option value="" selected="">Seleccione</option>
-												<option value="DNI">DNI</option>
-												<option value="LC">LC</option>
-												<option value="Otro">Otro</option>
-											</select>
-			
-											<label class="titulo"  for="NumDoc">Numero Documento</label>
-											<input type="text" name="Numero Documento" class="form-control" id="NumDoc" required>
-			
-											<label for="">Contraseña</label>
-											<input type="password" class="form-control">
-											<br>
-											<label for="file-upload" class="custom-file-upload">
-												<i class="fas fa-camera btn btn-success"></i> Foto de perfil
-												  
-											</label>
-											<input id="file-upload" type="file"/>
-			
-											<button type="submit"  class="form-control btn btn-primary">Registrar</button>
-								</form>
-							</div>
+                            <form action="login.html" id="Registro" class="form-group">
+                                    <div class="form-group">
+                                        
+                                        <label for="">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Juanito" size="35" pattern="^([a-zA-Z]{2,})$" required>
+                                        
+        
+                                        <label for="">Apellido</label>
+                                        <input type="text" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
+        
+                                        <label for="">Email</label>
+                                        <input class="form-control" type="email" placeholder="yoelarcoiris@yahoo.com" name="" id="" required>
+        
+                                        <label for="">Repetir Email</label>
+                                        <input type="email" class="form-control" placeholder="repetiremail@aca.com" required>
+        
+                                        <label class="titulo"  for="Tipo" >Tipo Documento</label>
+                                        <select name="tipoDoc" class="form-control" id="Tipo" name="Tipo" required> 
+                                            <option value="" selected="">Seleccione</option>
+                                            <option value="DNI">DNI</option>
+                                            <option value="LC">LC</option>
+                                        </select>
+        
+                                        <label class="titulo"  for="NumDoc">Numero Documento</label>
+                                        <input type="text" placeholder="205789632" name="Numero Documento" class="form-control" id="NumDoc" required minlength="6" maxlength="7">
+        
+                                        <label for="">Contraseña</label>
+                                        <input type="password" class="form-control">
+        
+                                        <button type="submit"  class="form-control btn btn-primary">Registrar</button>
+                            </form>
+        
                         </div>        
                     </div>
                 </div>
     </div>
+
+    <div id="Registro_Exitoso" class="modal fade">
+        <div class="modal-dialog">
+
+         <div class="modal-content">
+                
+            <div class="modal-header">
+                <H3 class="modal-title"></H3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+                <form action="" class="form-group">
+                <h2>El registro se ha realizado con exito</h2>
+                <input type="email" class="form-control">
+                
+                
+
+            </div>
+            <div class="modal-footer">
+                <button  type="submit" class="btn btn-primary">Aceptar</button>
+                </form> 
 
     
 </body>

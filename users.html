@@ -47,7 +47,7 @@
 									</li>
 									 <li class="px-3 py-2">
 									
-										 <a href="">Cerrar Sesion</a>
+										 <a href="login.html">Cerrar Sesion</a>
 					
 									</li>
 									
@@ -142,13 +142,13 @@
 						
 								<form action="" class="form-group">
 									<div class="form-group">
-										<label class="form-label">Nombre</label><input class="form-control" type="text"/>
+										<label class="form-label">Nombre</label><input required class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
 									</div>
 									<div class="form-group">
-										<label class="form-label">Correo electronico</label><input class="form-control"  type="email"/>
+										<label class="form-label">Correo electronico</label><input required class="form-control"  type="email"/>
 									</div>
 									<div class="form-group">
-										<label class="form-label">Contraseña</label><input class="form-control" type="password"/>
+										<label class="form-label">Contraseña</label><input required class="form-control" type="password"/>
 									</div>
 									
 								
@@ -177,13 +177,13 @@
 									<div class="modal-body">
 											<form action="" class="form-group">
 												<div class="form-group">
-													<label class="form-label">Nombre</label><input class="form-control" type="text"/>
+													<label class="form-label">Nombre</label><input required class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
 												</div>
 												<div class="form-group">
-													<label class="form-label">Correo electronico</label><input class="form-control" type="email"/>
+													<label class="form-label">Correo electronico</label><input required class="form-control" type="email"/>
 												</div>
 												<div class="form-group">
-													<label class="form-label">Contraseña</label><input class="form-control" type="password"/>
+													<label class="form-label">Contraseña</label><input required class="form-control" type="password"/>
 												</div>
 												<div class="form-group">
 													<label for="file-upload" class="custom-file-upload">
@@ -196,7 +196,7 @@
 			
 									</div>
 									<div class="modal-footer">
-											<button  type="button" class="btn btn-primary">Subir Archivo</button>
+											<button  type="submit" class="btn btn-primary">Subir Archivo</button>
 											</form> 
 										</div>
 									</div>
