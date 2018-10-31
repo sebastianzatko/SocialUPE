@@ -46,3 +46,16 @@ textarea {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
 }
+
+.nodeclink{
+	text-decoration:none;
+	color:black;
+}
+
+.nodeclink:hover{
+	text-decoration:none;
+	color:black;
+}
+.full-width{
+	width:100%;
+}
