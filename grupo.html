@@ -15,23 +15,23 @@
 	<body>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary " role="navigation">
 									
-					<a class="navbar-brand" href="#">Brand</a>
+					<a class="navbar-brand" href="#">SocialUPE</a>
 					<button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
 						&#9776;
 					</button>
 					<div class="collapse navbar-collapse" id="exCollapsingNavbar">
 						<ul class="nav navbar-nav">
-							<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+							<li class="nav-item"><a href="#" class="nav-link">Ayuda</a></li>
 							<form class="form-inline">
-									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+									<input class="form-control mr-sm-2" type="search" placeholder="Buscar Grupos" aria-label="Buscar Grupos">
+									<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
 							</form>
 
 						</ul>
 						<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 							<li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
 							<li class="dropdown order-1">
-								<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Config <span class="caret"></span></button>
+								<button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle text-white">Opciones <span class="caret"></span></button>
 								<ul class="dropdown-menu dropdown-menu-right mt-2">
 									 <li class="px-3 py-2">
 
@@ -54,13 +54,16 @@
 					<div class="card" style="width: 18rem;">
 					  <div class="card-body">
 						<h5 class="card-title">Archivos (4)</h5>
-						<button data-toggle="modal" data-target="#Subir_Archivo" class="btn btn-success">Subir Archivo</button>
+						
 					  </div>
 					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><p class="card-text"><i class="far fa-file fa-2x"></i> Introduccion seguridad e higiene.rar</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><p class="card-text"><i class="fas fa-file-powerpoint fa-2x"></i> Presentacion power point.pptx</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Trabajo Practico.doc</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Proyecto de catedra.doc</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="far fa-file fa-2x"></i> Introduccion seguridad e higiene.rar</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-powerpoint fa-2x"></i> Presentacion power point.pptx</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Trabajo Practico.doc</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Proyecto de catedra.doc</p></div></a></li>
+						<li class="list-group-item">
+							<button data-toggle="modal" data-target="#Subir_Archivo" class="btn btn-success">Subir nuevos archivos</button>
+						</li>
 					  </ul>
 					</div>
 				</div>
@@ -171,18 +174,29 @@
 				
 				
 				<div class="col-md-2 d-sm-none d-none d-md-block">
-					<div class="card" style="width: 18rem;">
+					<div class="card hija" style="width: 18rem;">
 					  <div class="card-body">
 						<h5 class="card-title">Miembros (6)</h5>
-						<button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar</button>
+						
 					  </div>
 					  <ul class="list-group list-group-flush">
 						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b>(Profesor)</li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b>(Alumno)</li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b>(Alumno)</li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b>(Alumno)</li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b>(Alumno)</li>
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b>(Alumno)</li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b>(Alumno)</li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b>(Alumno)</li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b>(Alumno)</li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b>(Alumno)</li>
+						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b>(Alumno)</li>
+						<li class="list-group-item"><button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar alumnos</button></li>
+					  </ul>
+					</div>
+					<div class="card hija" style="width: 18rem;">
+					  <div class="card-body">
+						<h5 class="card-title">Solicitudes</h5>
+						
+					  </div>
+					  <ul class="list-group list-group-flush">
+						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Susana Villaveloz</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Rechazar</button></li>
+						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Fernando Lapida</b><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Aceptar</button><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Rechazar</button></li>
 					  </ul>
 					</div>
 				</div>
@@ -197,12 +211,14 @@
 		<div class="modal-dialog">
 
 				<div class="modal-content">
-								<H3>Invitar Participante</H3>
+								
 						<div class="modal-header">
+								<h3 class="modal-title">Invitar Participante</h3>
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								
 						</div>
 						<div class="modal-body">
+						
 								<form action="" class="form-group">
 								<label for="">Ingrese Email</label>
 								<input type="email" class="form-control">
@@ -213,7 +229,7 @@
 						<div class="modal-footer">
 								<button  type="submit" class="btn btn-primary">Enviar Invitacion</button>
 								</form> 
-							</div>
+						</div>
 				</div>
 		</div>
 		</div>
@@ -223,14 +239,18 @@
 						<div class="modal-dialog">
 				
 								<div class="modal-content">
-												<H3>Subir Archivo</H3>
+												
 										<div class="modal-header">
+												<h3 class="modal-title">Subir Archivo</h3>
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												
 										</div>
 										<div class="modal-body">
 												<form action="" class="form-group">
-												<input  type="file">
+												<label for="file-upload" class="custom-file-upload">
+													<i class="fas fa-file-upload btn btn-success"></i>  Subir nuevo archivo
+												</label>
+												<input id="file-upload" type="file"/>
 												
 												
 				
@@ -241,7 +261,7 @@
 											</div>
 										</div>
 									</div>
-									</div>
+				</div>
 
 	</body>
 </html>

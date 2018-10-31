@@ -10,8 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script type="application/javascript" src="includes/js/notify.js"></script>
-    
+    	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/css/registro.css"/>
+	<link rel="stylesheet" href="includes/css/home.css">
     <title>Document</title>
 </head>
 <body>
@@ -39,8 +40,7 @@
                                         <label for="">Email</label>
                                         <input class="form-control" type="email" name="" id="">
         
-                                        <label for="">Repetir Email</label>
-                                        <input type="email" class="form-control">
+                        
         
                                         <label class="titulo"  for="Tipo" >Tipo Documento</label>
                                         <select name="tipoDoc" class="form-control" id="Tipo" name="Tipo" required> 
@@ -55,6 +55,12 @@
         
                                         <label for="">Contraseña</label>
                                         <input type="password" class="form-control">
+										<br>
+										<label for="file-upload" class="custom-file-upload">
+											<i class="fas fa-camera btn btn-success"></i>Foto de perfil
+											  
+										</label>
+										<input id="file-upload" type="file"/>
         
                                         <button type="submit"  class="form-control btn btn-primary">Registrar</button>
                             </form>
