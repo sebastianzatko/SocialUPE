@@ -71,10 +71,10 @@
 						
 					  </div>
 					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="far fa-file fa-2x"></i> Introduccion seguridad e higiene.rar</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-powerpoint fa-2x"></i> Presentacion power point.pptx</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Trabajo Practico.doc</p></div></a></li>
-						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Proyecto de catedra.doc</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" data-toggle="modal" data-target="#EliminarArchivo" class="close">&times;</button><p class="card-text"><i class="far fa-file fa-2x"></i> Introduccion seguridad e higiene.rar</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" data-toggle="modal" data-target="#EliminarArchivo" class="close">&times;</button><p class="card-text"><i class="fas fa-file-powerpoint fa-2x"></i> Presentacion power point.pptx</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" data-toggle="modal" data-target="#EliminarArchivo" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Trabajo Practico.doc</p></div></a></li>
+						<li class="list-group-item"><a href="#"><div class="archivo card-link"><button type="button" data-toggle="modal" data-target="#EliminarArchivo" class="close">&times;</button><p class="card-text"><i class="fas fa-file-word fa-2x"></i> Proyecto de catedra.doc</p></div></a></li>
 						<li class="list-group-item">
 							<button data-toggle="modal" data-target="#Subir_Archivo" class="btn btn-success">Subir nuevos archivos</button>
 						</li>
@@ -87,11 +87,11 @@
 					  </div>
 					  <ul class="list-group list-group-flush">
 						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b><span class="unhiglight">(Profesor)</span></li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b><span class="unhiglight">(Alumno)</span></li>
+						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b><span class="unhiglight">(Alumno)</span></li>
 						<li class="list-group-item"><button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar alumnos</button></li>
 					  </ul>
 					</div>
@@ -278,6 +278,64 @@
 										</div>
 									</div>
 				</div>
+
+				<div id="EliminarArchivo" class="modal fade">
+
+					<div class="modal-dialog">
+			
+							<div class="modal-content">
+											
+									<div class="modal-header">
+
+										<h4 class="modal-title">Eliminar Archivo</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+											
+											
+									</div>
+									<div class="modal-body">
+										<h3>	<i class="fas fa-exclamation fa-3x"></i>¿Esta seguro que desea eliminar?</h3>
+											
+											
+											
+			
+									</div>
+									<div class="modal-footer">
+											<button  type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+											<button type="button" class="btn btn-success">SI	</button>
+											 
+										</div>
+									</div>
+								</div>
+			</div>
+
+			<div id="EliminarMiembro" class="modal fade">
+
+				<div class="modal-dialog">
+		
+						<div class="modal-content">
+										
+								<div class="modal-header">
+
+									<h4 class="modal-title">Eliminar Miembro</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+										
+										
+								</div>
+								<div class="modal-body">
+									<h3>	<i class="fas fa-exclamation fa-3x"></i>¿Esta seguro que desea eliminar?</h3>
+										
+										
+										
+		
+								</div>
+								<div class="modal-footer">
+										<button  type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+										<button type="button" class="btn btn-success">SI	</button>
+										 
+									</div>
+								</div>
+							</div>
+		</div>
 
 	</body>
 </html>
