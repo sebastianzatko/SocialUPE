@@ -32,32 +32,23 @@
                                     <div class="form-group">
                                         
                                         <label for="">Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Juanito" size="35" pattern="^([a-zA-Z]{2,})$" required>
+                                        <input type="text" name="Nombre" class="form-control" placeholder="Juanito" size="35" pattern="^([a-zA-Z]{2,})$" required >
                                         
         
                                         <label for="">Apellido</label>
-                                        <input type="text" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
+                                        <input type="text" id="Apeliido" name="Apellido" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
         
                                         <label for="">Email</label>
-                                        <input class="form-control" type="email" placeholder="yoelarcoiris@yahoo.com" name="" id="" required>
-        
-                                        <label for="">Repetir Email</label>
-                                        <input type="email" class="form-control" placeholder="repetiremail@aca.com" required>
-        
-                                        <label class="titulo"  for="Tipo" >Tipo Documento</label>
-                                        <select name="tipoDoc" class="form-control" id="Tipo" name="Tipo" required> 
-                                            <option value="" selected="">Seleccione</option>
-                                            <option value="DNI">DNI</option>
-                                            <option value="LC">LC</option>
-                                        </select>
+                                        <input class="form-control" type="email" placeholder="yoelarcoiris@yahoo.com" name="email" id="email" required>
+
         
                                         <label class="titulo"  for="NumDoc">Numero Documento</label>
-                                        <input type="text" placeholder="205789632" name="Numero Documento" class="form-control" id="NumDoc" required minlength="6" maxlength="7">
+                                        <input type="text" placeholder="205789632" name="NumeroDocumento" class="form-control" id="NumDoc" required minlength="6" maxlength="7">
         
                                         <label for="">Contraseña</label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" name="contraseña" class="form-control" required>
         
-                                        <button type="submit"  class="form-control btn btn-primary">Registrar</button>
+                                        <button type="submit" id="registrar"   class="form-control btn btn-primary">Registrar</button>
                             </form>
         
                         </div>        

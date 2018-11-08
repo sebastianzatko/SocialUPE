@@ -10,6 +10,7 @@
 		<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 		<script type="application/javascript" src="includes/js/notify.js"></script>
 		<link rel="stylesheet" href="includes/css/newgroup.css">
+		<script src="includes/js/newgroup.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary " role="navigation">
@@ -66,14 +67,14 @@
 						</div>
 						<hr/>
 						<div class="panel-body recuadro">
-							<form accept-charset="UTF-8" role="form">
+							<form accept-charset="UTF-8" role="form" id="frmCrearGrupo">
 							<fieldset>
 								<div class="form-group">
-									<label>Nombre del grupo: </label><input class="form-control" placeholder="Nombre del grupo" name="email" type="text" required>
+									<label>Nombre del grupo: </label><input class="form-control" placeholder="Nombre del grupo" name="nombreGrupo" type="text" required>
 								</div>
 								<div class="form-group">
 									<label>Carrera del grupo:</label>
-									<select class="form-control" required >
+									<select class="form-control" name="carrera" required >
 										<option value="" selected>Tecnicatura en desarrollo de software</option>
 										<option value="" >Licenciatura en seguridad e higiene</option>
 										<option value="" >Licenciatura en Turismo y hoteleria</option>
@@ -81,7 +82,7 @@
 										<option value="" >Desapachante en aeronaves</option>
 									</select>
 								</div>
-								<input class="btn btn-lg btn-success btn-block" type="submit" value="Crear nuevo grupo">
+								<input class="btn btn-lg btn-success btn-block" type="submit" id="btnCrearGrupo" value="Crear nuevo grupo">
 							</fieldset>
 							</form>
 							
