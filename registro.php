@@ -11,8 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script type="application/javascript" src="includes/js/notify.js"></script>
-    <script src="includes/js/registro.js"></script>
-    
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="includes/css/home.css">
     <link rel="stylesheet" href="includes/css/registro.css"/>
     <title>Document</title>
 </head>
@@ -46,7 +46,15 @@
                                         <input type="text" placeholder="205789632" name="NumeroDocumento" class="form-control" id="NumDoc" required minlength="6" maxlength="7">
         
                                         <label for="">Contraseña</label>
-                                        <input type="password" name="contraseña" class="form-control" required>
+                                        <input type="password" name="contrasena" class="form-control" required>
+										<br>
+										<label for="file-upload" class="custom-file-upload">
+											<i class="fas fa-camera btn btn-success"></i> Foto de perfil
+											  
+										</label>
+										<input id="file-upload" name="imagen" type="file" required />
+										
+										<br>
         
                                         <button type="submit" id="registrar"   class="form-control btn btn-primary">Registrar</button>
                             </form>
@@ -56,28 +64,8 @@
                 </div>
     </div>
 
-    <div id="Registro_Exitoso" class="modal fade">
-        <div class="modal-dialog">
+   
 
-         <div class="modal-content">
-                
-            <div class="modal-header">
-                <H3 class="modal-title"></H3>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                
-            </div>
-            <div class="modal-body">
-                <form action="" class="form-group">
-                <h2>El registro se ha realizado con exito</h2>
-                <input type="email" class="form-control">
-                
-                
-
-            </div>
-            <div class="modal-footer">
-                <button  type="submit" class="btn btn-primary">Aceptar</button>
-                </form> 
-
-    
+     <script src="includes/js/registro.js"></script>
 </body>
 </html>

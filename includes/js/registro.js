@@ -8,8 +8,8 @@ $(document).ready(function(){
 
 
     //Validaciones//
-    $("#registrar").click(function(){
-	
+    $("#registro").submit(function(){
+		event.preventDefault()
         jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",
@@ -26,7 +26,7 @@ $(document).ready(function(){
             }
             
         });
-        $("#Registro").validate({
+        var validacion=$("#Registro").validate({
 
             rules:{
                 Nombre:{required:true, pattern:/^([a-zA-Z]{2,})$/},
@@ -42,15 +42,30 @@ $(document).ready(function(){
                 Apellido:{required:" El Apellido es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras"},
                 email:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com"},
                 NumeroDocumento:{required:" El Documento es requisito obligatorio ", number:"Solo se pueden ingresar numeros", minlength:"Debe tener mas de 7 numeros", maxlength:"Debe tener menos de 8 digitos"},
-                contraseña:{required:" La contraseña es requisito obligatorio "},
+                contrasena:{required:" La contraseña es requisito obligatorio "},
             },
-
-            
-            
-
         
         })
-   
+		if(validacion){
+			//enviarajax
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				data:formData,
+				url:"/includes/php/processnewuser.php",
+				type:"POST",
+				
+				success: function (data) {
+					if(data=="Se ha registrado correctamente"){
+						$.notify(data, "success");
+					}else{
+					    $.notify(data, "error");
+					    console.log(data);
+					}
+				}
+			});
+		}else{
+			//lo mandas al carajo
+		}
 
 
 

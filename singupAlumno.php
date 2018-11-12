@@ -78,6 +78,7 @@
 		</div>
 
 
-	
+		
 	</body>
+	<script type="application/javascript" src="includes/js/registro.js"></script>
 </html>
