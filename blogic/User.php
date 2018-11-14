@@ -38,20 +38,28 @@
             }
             
             $datos=new d_user;
+            
 			if($datos->verificarUsuarioExistente($mail)){
 				//subir foto
-				$ruta='/files/user/'.$mail."/";
-				$rutadb='/files/user/'.$mail."/";
-				mkdir($ruta,0777,true);
-				$extension=obtenerExtencion($fotoperfil['name']);
-				$archivo=$ruta."perfil.".$extension;
-				@move_uploaded_file($fotoperfil["tmp_name"],$archivo);
-				$archivo="/includes/php/".$rutadb."perfil.".$extension;
+                if(isset($fotoperfil["tmp_name"]) && $fotoperfil["tmp_name"]!=""){
+                    $ruta='files/user/'.$mail."/";
+                    $rutadb='files/user/'.$mail."/";
+                    mkdir($ruta,0777,true);//tal vez no hace falta
+                    $extension=obtenerExtencion($fotoperfil['name']);
+                    $archivo=$ruta."perfil.".$extension;
+                    @move_uploaded_file($fotoperfil["tmp_name"],$archivo);
+                    $archivo="includes/php/".$rutadb."perfil.".$extension;
+                }else{
+                    $archivo="files/images/default.png";
+                }
+				
+				
 				
 				
 				$datos->registrarNuevoUsuario($nombre,$apellido,$archivo,$mail,$contrasena);
 				return true;
 			}else{
+				
 				return false;
 			}
             

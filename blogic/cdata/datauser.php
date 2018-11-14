@@ -1,16 +1,18 @@
 <?php
-require_once('email.php');
+//require_once('email.php');
     
     class d_User{
 
         public function verificarUsuarioExistente($email){
             require "conexion/conection.php";
             $sql="SELECT id_usuario from usuario WHERE email=? LIMIT 1";    
+            
             if($stmt=$mysqli->prepare($sql)){
                 
                 $stmt->bind_param('s',$email);
                 $stmt->execute();
                 $resultado=$stmt->get_result();
+                
                 if(mysqli_num_rows($resultado)>=1){
                     return false;
                 }else{
@@ -27,7 +29,10 @@ require_once('email.php');
             $hashcontrasena=sha1($password.$randomsalt);
             $contrasenafinal=$hashcontrasena.",".$randomsalt;
 
-            $validacionHash=bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM));
+            $bytesxD = openssl_random_pseudo_bytes(32);
+            $hashxD = base64_encode($bytesxD);
+
+            $validacionHash=$hashxD;
 
             $sql="INSERT INTO `usuario` (`nombre`,`apellido`,`email`,`contrasena`,`fotoperfil`,`hash_confirmacion`,`estado`,`habilitado`,`tipousuario`) VALUES (?,?,?,?,?,?,0,0,1)";
             if($stmt=$mysqli->prepare($sql)){

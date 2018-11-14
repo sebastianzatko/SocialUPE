@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 
     //Validaciones//
-    $("#registro").submit(function(){
+    $("#Registro").submit(function(){
 		event.preventDefault()
         jQuery.validator.setDefaults({
             debug:true,
@@ -51,8 +51,10 @@ $(document).ready(function(){
 			var formData = new FormData($(this)[0]);
 			$.ajax({
 				data:formData,
-				url:"/includes/php/processnewuser.php",
+				url:this.action,
 				type:"POST",
+				processData: false,
+				contentType: false,
 				
 				success: function (data) {
 					if(data=="Se ha registrado correctamente"){
