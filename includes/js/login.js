@@ -1,10 +1,5 @@
 $(document).ready(function(){
-
-
-    //Validaciones//
-    $("#logear").click(function(){
-	
-        jQuery.validator.setDefaults({
+	jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",
             errorElement:"div",
@@ -20,7 +15,12 @@ $(document).ready(function(){
             }
             
         });
-        $("#frmLogin").validate({
+
+    //Validaciones//
+    $("#frmLogin").submit(function(){
+		event.preventDefault();
+        
+        var validacion=$("#frmLogin").validate({
 
             rules:{
                 email:{required:true, email:true},
@@ -38,6 +38,28 @@ $(document).ready(function(){
 
         
         })
+		
+		if(validacion){
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				data:formData,
+				url:this.action,
+				type:"POST",
+				processData: false,
+				contentType: false,
+				
+				success: function (data) {
+					if(data=="Ha ingresado correctamente"){
+						$.notify(data, "success");
+						window.location.href = 'home.php';
+					}else{
+					    $.notify(data, "error");
+					    console.log(data);
+					}
+				}
+				
+			});
+		}
    
 
 

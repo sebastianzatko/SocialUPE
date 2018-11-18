@@ -30,7 +30,7 @@
 							<h3 class="panel-title">Ingresar</h3>
 						</div>
 						<div class="panel-body recuadro">
-							<form action="home.html" id="frmLogin"accept-charset="UTF-8" role="form">
+							<form action="includes/php/processlogin.php" method="POST" id="frmLogin"accept-charset="UTF-8" role="form">
 							<fieldset>
 								<div class="form-group">
 									<input class="form-control" placeholder="correoelectronico@ejemplo.com" name="email" type="email" required>
@@ -50,7 +50,7 @@
 							<a href="" data-toggle="modal" data-target="#Recuperar_contraseña"><small>Olvide mi contraseña</small></a>
 							  <hr/>
 
-							<a href="registro.html"><small>No tienes una cuenta? Registrate con tu codigo</small></a>
+							<a href="registro.php"><small>No tienes una cuenta? Registrate con tu codigo</small></a>
 						</div>
 					</div>
 				</div>

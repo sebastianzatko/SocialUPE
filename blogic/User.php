@@ -15,19 +15,19 @@
 
 
 
-        public function ingresar($email,$contrasena,$lat,$long){
+        public function ingresar($email,$contrasena){
             include "cdata/datauser.php";
 
             $datos=new d_user;
             if(strlen($email)<120){
-                if($datos->dataIngresar($email,$contrasena,$lat,$long)){
+                if($datos->dataIngresar($email,$contrasena)){
                     return true;
                 }else{
                     return false;
                 }
             }
         }
-        public function registrar($nombre,$apellido,$mail,$contrasena,$fotoperfil){
+        public function registrar($nombre,$apellido,$mail,$contrasena,$fotoperfil,$tipousuario){
            
             include "cdata/datauser.php";
 
@@ -56,7 +56,7 @@
 				
 				
 				
-				$datos->registrarNuevoUsuario($nombre,$apellido,$archivo,$mail,$contrasena);
+				$datos->registrarNuevoUsuario($nombre,$apellido,$archivo,$mail,$contrasena,$tipousuario);
 				return true;
 			}else{
 				
@@ -97,7 +97,28 @@
 			session_unset($_SESSION["foto"]);
 			session_destroy();
 		}
-
+		
+		public function puede($permiso,$permisosusuario){
+			
+			if(in_array($permiso,$permisosusuario)){
+				return true;
+			}else{
+				return false;
+			}
+			
+		}
+		
+		public function obtenerusuarios(){
+			
+		}
+		
+		public function filtrarusuarios(){
+			
+		}
+		
+		public function cambiarestadousuario(){
+			
+		}
     }
 
 

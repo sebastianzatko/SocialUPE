@@ -23,7 +23,7 @@
                 echo $error;
              }
         }
-        public function registrarNuevoUsuario($nombre,$apellido,$fotoperfil,$mail,$password){
+        public function registrarNuevoUsuario($nombre,$apellido,$fotoperfil,$mail,$password,$tipousuario){
             require "conexion/conection.php";
             $randomsalt=uniqid('', true);;
             $hashcontrasena=sha1($password.$randomsalt);
@@ -34,9 +34,9 @@
 
             $validacionHash=$hashxD;
 
-            $sql="INSERT INTO `usuario` (`nombre`,`apellido`,`email`,`contrasena`,`fotoperfil`,`hash_confirmacion`,`estado`,`habilitado`,`tipousuario`) VALUES (?,?,?,?,?,?,0,0,1)";
+            $sql="INSERT INTO `usuario` (`nombre`,`apellido`,`email`,`contrasena`,`fotoperfil`,`hash_confirmacion`,`estado`,`habilitado`,`tipousuario`) VALUES (?,?,?,?,?,?,0,0,?)";
             if($stmt=$mysqli->prepare($sql)){
-                $stmt->bind_param('ssssss',$nombre,$apellido,$mail,$contrasenafinal,$fotoperfil,$validacionHash);
+                $stmt->bind_param('ssssssi',$nombre,$apellido,$mail,$contrasenafinal,$fotoperfil,$validacionHash,$tipousuario);
                 
                 
                 if($stmt->execute()){
@@ -61,7 +61,7 @@
         }
         public function verificarCuenta($email,$condigoDeValidacion){
             require "conexion/conection.php";
-            $sql="SELECT `idUSUARIO`,`HASH_VALIDACION` FROM `USUARIOS` WHERE `MAIL`=? LIMIT 1";
+            $sql="SELECT `id_usuario`,`hash_confirmacion`` FROM `usuario` WHERE `email`=? LIMIT 1";
             if($stmt=$mysqli->prepare($sql)){
                 $stmt->bind_param("s",$email);
                 $stmt->execute();
@@ -74,9 +74,9 @@
                 }else{
                     $row = mysqli_fetch_assoc($resultado);
                     
-                    if($row['HASH_VALIDACION']==$condigoDeValidacion){
-                        $id=$row['idUSUARIO'];
-                        $sql2="UPDATE USUARIOS SET HASH_VALIDACION=NULL,ESTADO=1 WHERE idUSUARIO=? ";
+                    if($row['hash_confirmacion']==$condigoDeValidacion){
+                        $id=$row['id_usuario'];
+                        $sql2="UPDATE usuario SET hash_confirmacion=NULL,estado=1 WHERE id_usuario=? ";
                         if($statement=$mysqli->prepare($sql2)){
                             $statement->bind_param("i",$id);
                             $statement->execute();
@@ -97,35 +97,38 @@
                 echo $error;
             }
         }
-        public function dataIngresar($email,$contrasena,$lat,$long){
+        public function dataIngresar($email,$contrasena){
             require "conexion/conection.php";
-            $sql="SELECT idUSUARIO,CONTRASENA,NOMBRE,FOTO_DE_PERFIL,TIPO_USUARIO FROM USUARIOS WHERE MAIL=? AND ESTADO<>0 LIMIT 1";
+            $sql="SELECT id_usuario,contrasena,nombre,apellido,documento,tipousuario FROM usuario WHERE email=? AND estado<>0 LIMIT 1";
+			
             if($stmt=$mysqli->prepare($sql)){
                 $stmt->bind_param("s",$email);
                 $stmt->execute();
 
                 $resultado=$stmt->get_result();
+				
                 if(mysqli_num_rows($resultado)==0){
                     return false;
                 }else{
                     $row = mysqli_fetch_assoc($resultado);
-                    $arr=explode(",",$row['CONTRASENA']);
+                    $arr=explode(",",$row['contrasena']);
                     $salt=$arr[1];
                     $pass=$arr[0];
 
                     $contrasenatemporal=sha1($contrasena.$salt);
                     if($contrasenatemporal==$pass){
                         session_start();
-                        $_SESSION["nombre"]=$row['NOMBRE'];
-                        $_SESSION["foto"]=$row['FOTO_DE_PERFIL'];
-                        $_SESSION["id"]=$row['idUSUARIO'];
-                        $_SESSION["tipo"]=$row['TIPO_USUARIO'];
-                        if($_SESSION["tipo"]==1){
-                            require "dataprofessional.php";
-                            $profesional=new dataprofessional;
-                            $_SESSION['idpro']=$profesional->get_idprofesional($_SESSION["id"]);
-                            $profesional->actualizarcoordenadas($lat,$long,$_SESSION['idpro']);
-                        }
+						$sql2="SELECT permisos.id_accion,acciones.descripcion FROM permisos,acciones WHERE permisos.id_accion=acciones.id_accion AND permisos.id_rol=?";
+						$stmt=$mysqli->prepare($sql2);
+						$stmt->bind_param("i",$row["tipousuario"]);
+						$stmt->execute();
+						$permisos=array();
+						$resultado2=$stmt->get_result();
+						while($row2 = $resultado2->fetch_assoc()) {
+						   array_push($permisos,$row2["descripcion"]);
+						}
+						$_SESSION["permisos"]=$permisos;
+                        $_SESSION["id"]=$row['id_usuario'];
 						$_SESSION["email"]=$email;
                         return true;
                     }else{
@@ -151,6 +154,7 @@
                 echo $error;
             }
         }
+		//talvez no sirve
 		public function modificarDatosUsuario($nombre,$apellido,$telefono,$fotoperfil,$direccion,$provincia,$localidad){
 			require "conexion/conection.php";
 			$sql="UPDATE USUARIOS SET NOMBRE=?,APELLIDO=?,TELEFONO=?,FOTO_DE_PERFIL=?,DIRECCION=?,PROVINCIA=?,LOCALIDAD=? WHERE idUSUARIO=?";
