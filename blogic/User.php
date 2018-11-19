@@ -108,15 +108,22 @@
 			
 		}
 		
-		public function obtenerusuarios(){
-			
+		public function obtenerusuarios($paginacion,$orden,$busqueda){
+			include "cdata/datauser.php";
+            $datos=new d_user;
+            $resultado=$datos->obtenerUsuarios($paginacion,$orden,$busqueda);
+            return $resultado;
 		}
 		
 		public function filtrarusuarios(){
 			
 		}
 		
-		public function cambiarestadousuario(){
+		public function cambiarestadousuario($idestado,$idusuario){
+			include "cdata/datauser.php";
+			$datos=new d_user;
+			$resultado=$user->cambiarestadousuario($idestado,$idusuario);
+			return $resultado;
 			
 		}
     }

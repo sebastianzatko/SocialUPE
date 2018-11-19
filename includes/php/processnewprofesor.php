@@ -7,8 +7,7 @@
 		$numerodedocumento=$_POST["lblNumDocProf"];
 		$contrasena=$_POST["lblContraseñaProf"];
 		$imagen=$_FILES["imagen"];
-
-	
+		
 		
 		
 		if((strlen($nombre)<45 and strlen($nombre)>4) and (strlen($apellido)<45 and strlen($apellido)>4) and (strlen($email)<200 and strlen($email)>10) and (strlen($contrasena)<120 and strlen($contrasena)>=8) and (strlen($numerodedocumento)<25 and strlen($numerodedocumento)>=7)){

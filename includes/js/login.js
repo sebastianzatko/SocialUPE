@@ -18,7 +18,6 @@ $(document).ready(function(){
 
     //Validaciones//
     $("#frmLogin").submit(function(){
-        console.log("hola");
 		event.preventDefault();
         
         var validacion=$("#frmLogin").validate({

@@ -1,7 +1,9 @@
 <?php
 	session_start();
 	if(isset($_SESSION["id"]) and isset($_SESSION["email"])){
-		
+		require_once("blogic/User.php");
+		$user=new b_user();
+		$listadeusuarios=$user->obtenerusuarios("","","");
 	}else{
 		
 		header("Location:login.php");
@@ -22,7 +24,7 @@
 		<script type="application/javascript" src="includes/js/notify.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" href="includes/css/home.css">
-		
+		<script src="includes/js/users.js"></script>
 	</head>
 	<body>
 		<?php
@@ -47,47 +49,23 @@
 						  </tr>
 					  </thead>   
 					  <tbody>
-						<tr>
-							<td><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/></td>
-							<td>Donna R. Folse</td>
-							<td>2012/05/06</td>
-							<td>Profesor</td>
-							<td><span class=" p-3 mb-2 text-white bg-primary">Activo</span>
-							</td>                                       
-							<td><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Desactivar</button></td>
-						</tr>
-						<tr>
-							<td><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/></td>
-							<td>Emily F. Burns</td>
-							<td>2011/12/01</td>
-							<td>Alumno</td>
-							<td><span class="p-3 mb-2 text-white bg-danger">Baneado</span></td>
-							<td><button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Reactivar</button></td>					
-						</tr>
-						<tr>
-							<td><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/></td>
-							<td>Andrew A. Stout</td>
-							<td>2010/08/21</td>
-							<td>Administrador</td>
-							<td><span class="p-3 mb-2 text-white bg-warning">Inactivo</span></td> 
-							<td><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Desactivar</button></td>
-						</tr>
-						<tr>
-							<td><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/></td>
-							<td>Mary M. Bryan</td>
-							<td>2009/04/11</td>
-							<td>Profesor</td>
-							<td><span class="p-3 mb-2 text-white bg-info">Pendiente</span></td>    
-							<td><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Desactivar</button></td>
-						</tr>
-						<tr>
-							<td><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/></td>
-							<td>Mary A. Lewis</td>
-							<td>2007/02/01</td>
-							<td>Administrador</td>
-							<td><span class="p-3 mb-2 text-white bg-primary">Activo</span></td>  
-							<td><button type="button" class="btn btn-danger"><i class="fas fa-ban"></i> Desactivar</button></td>
-						</tr>                                   
+						<?php
+							foreach($listadeusuarios as $usuario){
+								if($usuario[4]=="Pendiente activacion"){
+									$estado="<span class='p-3 mb-2 text-white bg-info'>".$usuario[4]."</span>";
+									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
+								}elseif($usuario[4]=="Baneada"){
+									$estado="<span class='p-3 mb-2 text-white bg-danger'>".$usuario[4]."</span>";
+									$botton="<button data-iduser='".$usuario[7]."'  type='button' class='btn btn-primary'><i class='far fa-thumbs-up'></i> Reactivar</button>";
+								}else{
+									$estado="<span class=' p-3 mb-2 text-white bg-primary'>".$usuario[4]."</span>";
+									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
+								}
+								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><td>".$usuario[5]."</td><td>".$usuario[6]."</td><td>".$estado."</td><td>".$botton."</td></tr>";
+							}
+						?>
+						
+			                                  
 					  </tbody>
 					</table>
 				</div>
@@ -118,16 +96,9 @@
 									<div class="form-group">
 										<label class="form-label">Nombre</label><input required name="lblNombreAdmin" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
 									</div>
-									<div>
-										<label for="">Apellido</label>
-                                        <input type="text" id="Apellido" name="lblApellidoAdmin" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
-									</div>
 									<div class="form-group">
 										<label class="form-label">Correo electronico</label><input required name="lblEmailAdmin" class="form-control"  type="email"/>
 									</div>
-									<div>
-										<label class="titulo"  for="NumDoc">Numero Documento</label>
-                                        <input type="text" placeholder="205789632" name="lblNumDocAdm" class="form-control" id="NumDoc" required minlength="7" maxlength="8"></div>
 									<div class="form-group">
 										<label class="form-label">Contraseña</label><input required name="lblContraseñaAdmin" class="form-control" type="password"/>
 									</div>
@@ -194,6 +165,7 @@
 								</div>
 				</div>
 		</div>
-		<script src="includes/js/users.js"></script>
+		<script src="includes/js/botonesusuarios.js">
+		</script>
 	</body>
 </html>

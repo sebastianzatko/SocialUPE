@@ -21,7 +21,7 @@
 	
 	$htmlmenu="<nav class='navbar navbar-expand-lg navbar-dark bg-primary ' role='navigation'>
 									
-					<a class='navbar-brand' href='home.html'>SocialUPE</a>
+					<a class='navbar-brand' href='home.php'>SocialUPE</a>
 					<button class='navbar-toggler border-0' type='button' data-toggle='collapse' data-target='#exCollapsingNavbar'>
 						&#9776;
 					</button>

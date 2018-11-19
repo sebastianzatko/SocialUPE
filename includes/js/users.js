@@ -110,6 +110,7 @@ $(document).ready(function(){
         if(validacion){
 			//enviarajax
 			var formData = new FormData($(this)[0]);
+			
 			$.ajax({
 				data:formData,
 				url:this.action,
