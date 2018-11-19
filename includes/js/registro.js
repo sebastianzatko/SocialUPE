@@ -9,6 +9,7 @@ $(document).ready(function(){
 
     //Validaciones//
     $("#Registro").submit(function(){
+        console.log("hola");
 		event.preventDefault()
         jQuery.validator.setDefaults({
             debug:true,

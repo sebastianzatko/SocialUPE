@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
 
+
     //Validaciones//
-    $("#btnAgregarAdmin").click(function(){
+    $("#frmNuevoAdmin").submit(function(){
 	
         jQuery.validator.setDefaults({
             debug:true,
@@ -20,7 +21,7 @@ $(document).ready(function(){
             }
             
         });
-        $("#frmNuevoAdmin").validate({
+        var validacion = $("#frmNuevoAdmin").validate({
 
             rules:{
                 lblNombreAdmin:{required:true, pattern:/^([A-Za-z]+)$/, minlength:2, maxlength:15},
@@ -38,6 +39,29 @@ $(document).ready(function(){
                 
             },
         })
+        if(validacion){
+			//enviarajax
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				data:formData,
+				url:this.action,
+				type:"POST",
+				processData: false,
+				contentType: false,
+				
+				success: function (data) {
+					if(data=="Se ha registrado correctamente"){
+						$.notify(data, "success");
+					}else{
+					    $.notify(data, "error");
+					    console.log(data);
+					}
+				}
+			});
+		}else{
+			//lo mandas al carajo
+		}
+
             
             
 
@@ -45,8 +69,9 @@ $(document).ready(function(){
         })
 
         //Validaciones//
-    $("#btnAgregarProf").click(function(){
-	
+    $("#frmNuevoProfesor").submit(function(){
+        console.log("hola");
+        event.preventDefault()
         jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",
@@ -63,8 +88,8 @@ $(document).ready(function(){
             }
             
         });
-        $("#frmNuevoProfesor").validate({
-
+        var validacion=$("#frmNuevoProfesor").validate({
+            
             rules:{
                 lblNombreProf:{required:true, pattern:/^([A-Za-z]+)$/, minlength:2, maxlength:15},
                 lblEmailProf:{required:true, email:true},
@@ -82,6 +107,28 @@ $(document).ready(function(){
                 
             },
         })
+        if(validacion){
+			//enviarajax
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				data:formData,
+				url:this.action,
+				type:"POST",
+				processData: false,
+				contentType: false,
+				
+				success: function (data) {
+					if(data=="Se ha registrado correctamente"){
+						$.notify(data, "success");
+					}else{
+					    $.notify(data, "error");
+					    console.log(data);
+					}
+				}
+			});
+		}else{
+			//lo mandas al carajo
+		}
             
             
 

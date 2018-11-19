@@ -61,7 +61,7 @@
         }
         public function verificarCuenta($email,$condigoDeValidacion){
             require "conexion/conection.php";
-            $sql="SELECT `id_usuario`,`hash_confirmacion`` FROM `usuario` WHERE `email`=? LIMIT 1";
+            $sql="SELECT `id_usuario`,`hash_confirmacion` FROM `usuario` WHERE `email`=? LIMIT 1";
             if($stmt=$mysqli->prepare($sql)){
                 $stmt->bind_param("s",$email);
                 $stmt->execute();

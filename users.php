@@ -22,7 +22,7 @@
 		<script type="application/javascript" src="includes/js/notify.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" href="includes/css/home.css">
-		<script src="includes/js/users.js"></script>
+		
 	</head>
 	<body>
 		<?php
@@ -118,9 +118,16 @@
 									<div class="form-group">
 										<label class="form-label">Nombre</label><input required name="lblNombreAdmin" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
 									</div>
+									<div>
+										<label for="">Apellido</label>
+                                        <input type="text" id="Apellido" name="lblApellidoAdmin" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
+									</div>
 									<div class="form-group">
 										<label class="form-label">Correo electronico</label><input required name="lblEmailAdmin" class="form-control"  type="email"/>
 									</div>
+									<div>
+										<label class="titulo"  for="NumDoc">Numero Documento</label>
+                                        <input type="text" placeholder="205789632" name="lblNumDocAdm" class="form-control" id="NumDoc" required minlength="7" maxlength="8"></div>
 									<div class="form-group">
 										<label class="form-label">Contraseña</label><input required name="lblContraseñaAdmin" class="form-control" type="password"/>
 									</div>
@@ -149,12 +156,22 @@
 											
 									</div>
 									<div class="modal-body">
-											<form action="" class="form-group" id="frmNuevoProfesor">
+											<form action="includes/php/processnewprofesor.php" enctype="multipart/form-data"  class="form-group" id="frmNuevoProfesor" method="POST">
 												<div class="form-group">
-													<label class="form-label">Nombre</label><input required name="lblNombreProf" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
+													<label class="form-label">Nombre</label>
+													<input required name="lblNombreProf" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
+												</div>
+												<div>
+													<label for="">Apellido</label>
+                                       			 	<input type="text" id="lblApellidoProf" name="lblApellidoProf" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
 												</div>
 												<div class="form-group">
-													<label class="form-label">Correo electronico</label><input required name="lblEmailProf" class="form-control" type="email"/>
+													<label class="form-label">Correo electronico</label>
+													<input required name="lblEmailProf" class="form-control" type="email"/>
+												</div>
+												<div>
+													<label class="titulo"  for="NumDoc">Numero Documento</label>
+                                      				  <input type="text" placeholder="205789632" name="lblNumDocProf" class="form-control" id="lblNumDocProf" required minlength="7" maxlength="8">
 												</div>
 												<div class="form-group">
 													<label class="form-label">Contraseña</label><input required name="lblContraseñaProf" class="form-control" type="password"/>
@@ -177,5 +194,6 @@
 								</div>
 				</div>
 		</div>
+		<script src="includes/js/users.js"></script>
 	</body>
 </html>
