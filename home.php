@@ -48,7 +48,7 @@
 				
 					<div class="container">
 			<div class="row">
-				<div class="col-md-6 d-sm-none d-none d-md-block d-none d-sm-block">
+				<div class="col-md-6 d-sm-none d-none d-md-block">
 					<div class="card" style="width: 18rem;">
 						<?php
 							echo "<img class='card-img-top' src='".$datospersonales['fotoperfil']."' alt='Foto perfil'><div class='card-body'><h5 class='card-title'>".$datospersonales['nombre']." ".$datospersonales["apellido"]."</h5><p class='card-text'>".$datospersonales["email"]."</p></div>";
@@ -61,7 +61,9 @@
 					  <ul class="list-group list-group-flush">
 						<?php
 							foreach($listadegrupos as $grupo){
-								echo "<li class='list-group-item'><a href='grupo.php?idgroup=".$grupo[0]."' class='card-link'>".$grupo[1]."</a></li>";
+								if($grupo[2]=="1"){
+									echo "<li class='list-group-item'><a href='grupo.php?idgroup=".$grupo[0]."' class='card-link'>".$grupo[1]."</a></li>";
+								}
 							}
 						
 						?>

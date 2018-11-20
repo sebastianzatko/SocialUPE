@@ -2,7 +2,7 @@
 	require_once("./blogic/User.php");
 	$user=new b_user();
 	if($user->puede("buscar grupos",$_SESSION["permisos"])){
-		$buscador="<form class='form-inline'><div class='form-inline'><input class='form-control mr-sm-2' type='search' placeholder='Buscar Grupos' aria-label='Buscar Grupos'><button class='btn btn-outline-light my-2 my-sm-0' onclick='location.href = 'search.php';' type='submit'>Buscar</button></div></form>";
+		$buscador="<form class='form-inline' action='search.php' method='GET'><div class='form-inline'><input class='form-control mr-sm-2' name='busqueda' type='search' placeholder='Buscar Grupos' aria-label='Buscar Grupos'><button class='btn btn-outline-light my-2 my-sm-0' type='submit'>Buscar</button></div></form>";
 	}else{
 		$buscador="";
 	}

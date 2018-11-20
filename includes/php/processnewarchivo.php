@@ -4,14 +4,14 @@
 		require_once("../../blogic/User.php");
 		$user=new b_user();
 		if($user->puede("comentar",$_SESSION["permisos"])){
-			if(isset($_FILES["archivo"]) and ){
-				$comentario=$_POST["comentario"];
-				$idpublicacion=$_POST["id_publicacion"];
-				echo "aca lleog wachin";
-				require_once("../../blogic/Comentario.php");
-				$comentary=new Comentario();
-				if($comentary->comentar((int)$_SESSION["id"],(int)$idpublicacion,$comentario)){
-					echo "Comentario realizado con exito";
+			
+			if(isset($_FILES["archivo"]) and $_FILES["archivo"]["name"]!="" and (isset($_POST["idgrupo"]))){
+				$archivo=$_FILES["archivo"];
+				$idgrupo=$_POST["idgrupo"];
+				require_once("../../blogic/Archivo.php");
+				$filezilla=new Archivo();
+				if($filezilla->subirarchivo($archivo,(int)$idgrupo,(int)$_SESSION["id"])){
+					echo "Archivo subido con exito";
 				}else{
 					echo "Faltan datos necesarios para realizar la operacion";
 				}

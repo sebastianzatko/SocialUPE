@@ -23,7 +23,7 @@ class datapublicacion{
 				publicacion
 			INNER JOIN usuario ON publicacion.id_usuario = usuario.id_usuario
 			WHERE
-				publicacion.id_grupo = ?";
+				publicacion.id_grupo = ? ORDER BY publicacion.fecha DESC";
 				$query=$con->prepare($sql);
 				if($query->execute(array($idgrupo))){
 					$result = $query->fetchAll();

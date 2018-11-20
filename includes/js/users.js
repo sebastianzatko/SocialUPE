@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     //Validaciones//
     $("#frmNuevoAdmin").submit(function(){
-	
+		event.preventDefault()
         jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",
