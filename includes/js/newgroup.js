@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 
     //Validaciones//
-    $("#btnCrearGrupo").submit(function(){
-	
+    $("#frmCrearGrupo").submit(function(){
+		event.preventDefault();
         jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",
@@ -20,11 +20,11 @@ $(document).ready(function(){
             }
             
         });
-        $("#frmCrearGrupo").validate({
+        var validacion=$("#frmCrearGrupo").validate({
 
             rules:{
                 nombreGrupo:{required:true, pattern:/^([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})|([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})$/, minlength:5, maxlength:30},
-                carrera:{required:false}
+                carrera:{required:true}
 
             },
 
@@ -40,7 +40,27 @@ $(document).ready(function(){
 
         
         })
-   
+		if(validacion){
+			//enviarajax
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				data:formData,
+				url:this.action,
+				type:"POST",
+				processData: false,
+				contentType: false,
+				success: function (data) {
+					if(data=="Se ha creado un grupo correctamente"){
+						$.notify(data, "success");
+					}else{
+					    $.notify(data, "error");
+					    console.log(data);
+					}
+				}
+			});
+		}else{
+			//lo mandas al carajo
+		}
 
 
 

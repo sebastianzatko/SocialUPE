@@ -30,6 +30,10 @@
 				require "templates/menu.php";
     
 				echo $htmlmenu;
+				if($user->puede("crear grupos",$_SESSION["permisos"])){
+					echo $modalcrear;
+					echo $scriptcreargrupo;
+				}
 			
 			?>
 		

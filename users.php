@@ -31,6 +31,10 @@
 				require "templates/menu.php";
     
 				echo $htmlmenu;
+				if($user->puede("crear grupos",$_SESSION["permisos"])){
+					echo $modalcrear;
+					echo $scriptcreargrupo;
+				}
 			
 			?>
 		
@@ -180,7 +184,6 @@
 								</div>
 				</div>
 		</div>
-		<script src="includes/js/users.js"></script>
 		<script src="includes/js/botonesusuarios.js">
 		</script>
 	</body>

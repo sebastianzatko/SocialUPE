@@ -1,8 +1,9 @@
 <?php
+	session_start();
 	if(isset($_SESSION["permisos"]) and $_SESSION["id"]){
-		require_once("./blogic/User.php");
+		require_once("../../blogic/User.php");
 		$user=new b_user();
-		if($user->puede("manejar usuarios",$_SESSION["permisos"]){
+		if($user->puede("manejar usuarios",$_SESSION["permisos"])){
 			$idusuario=$_POST["id"];
 			if(isset($idusuario) and $idusuario!=""){
 				$resultado=$user->cambiarestadousuario(2,(int)$idusuario);

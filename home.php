@@ -1,7 +1,13 @@
 <?php
 	session_start();
 	if(isset($_SESSION["id"]) and isset($_SESSION["email"])){
-		
+		require_once("blogic/Grupo.php");
+		$grupo=new Grupo();
+		$listadegrupos=$grupo->obtenerGrupos((int)$_SESSION["id"]);
+		require_once("blogic/User.php");
+		$user=new b_user();
+		$row=$user->obtenerDatosDeUsuario((int)$_SESSION["id"]);
+		$datospersonales=mysqli_fetch_assoc($row);
 	}else{
 		
 		header("Location:login.php");
@@ -32,6 +38,10 @@
 				require "templates/menu.php";
     
 				echo $htmlmenu;
+				if($user->puede("crear grupos",$_SESSION["permisos"])){
+					echo $modalcrear;
+					echo $scriptcreargrupo;
+				}
 			
 			?>
 				
@@ -40,17 +50,22 @@
 			<div class="row">
 				<div class="col-md-6 d-sm-none d-none d-md-block">
 					<div class="card" style="width: 18rem;">
-					  <img class="card-img-top" src="files/images/default.png" alt="Card image cap">
-					  <div class="card-body">
-						<h5 class="card-title">Sebastian Castellanos</h5>
-						<p class="card-text">sebastiancastellanos@mail.com</p>
-					  </div>
-					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><a href="grupo.html" class="card-link">Matematica 3</a></li>
-						<li class="list-group-item"><a href="grupo.html" class="card-link">Ingenieria de Software</a></li>
-						<li class="list-group-item"><a href="grupo.html" class="card-link">Fisica</a></li>
+						<?php
+							echo "<img class='card-img-top' src='".$datospersonales['fotoperfil']."' alt='Foto perfil'><div class='card-body'><h5 class='card-title'>".$datospersonales['nombre']." ".$datospersonales["apellido"]."</h5><p class='card-text'>".$datospersonales["email"]."</p></div>";
+						?>
+					  
+					  
 						
-						<li class="list-group-item"><a href="login.html" class="card-link">Salir</a></li>
+						
+					  
+					  <ul class="list-group list-group-flush">
+						<?php
+							foreach($listadegrupos as $grupo){
+								echo "<li class='list-group-item'><a href='grupo.php?idgroup=".$grupo[0]."' class='card-link'>".$grupo[1]."</a></li>";
+							}
+						
+						?>
+						<li class="list-group-item"><a href="logout.php" class="card-link">Salir</a></li>
 						
 					  </ul>
 					</div>

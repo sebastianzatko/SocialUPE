@@ -14,10 +14,60 @@
 	}
 	
 	if($user->puede("crear grupos",$_SESSION["permisos"])){
-		$creargrupo="<li class='px-3 py-2'><a href='newgroup.php'>Crear Grupo</a></li>";
+		$creargrupo="<li class='px-3 py-2'><a data-toggle='modal' href='' data-target='#nuevogrupo' >Crear Grupo</a></li>";
+		require "blogic/Carrera.php";
+		$carreras=new Carrera();
+		$lista=$carreras->obtenerCarreras();
+		$total="";
+		foreach($lista as $item){
+			$total=$total."<option value='".$item[0]."' >".$item[1]."</option>";
+		}
+		$modalcrear="
+		<div id='nuevogrupo' class='modal fade'>
+
+						<div class='modal-dialog'>
+				
+								<div class='modal-content'>
+												
+										<div class='modal-header'>
+												<h3 class='modal-title'>Nuevo Grupo</h3>
+												<button type='button' class='close' data-dismiss='modal'>&times;</button>
+												
+										</div>
+										<div class='modal-body'>
+												<form accept-charset='UTF-8' action='includes/php/processnewgrupo.php' method='POST' role='form' id='frmCrearGrupo'>
+												<fieldset>
+													<div class='form-group'>
+														<label>Nombre del grupo: </label><input class='form-control' placeholder='Nombre del grupo' name='nombreGrupo' type='text' required>
+													</div>
+													<div class='form-group'>
+														<label>Carrera del grupo:</label>
+														<select class='form-control' name='carrera' required >
+															".$total."
+														</select>
+													</div>
+													
+										</div>
+										<div class='modal-footer'>
+												<button  type='submit' id='btnCrearGrupo' class='btn btn-lg btn-success btn-block'>Crear nuevo grupo</button>
+												</fieldset>
+												</form> 
+											</div>
+										</div>
+									</div>
+					</div>";
+					$scriptcreargrupo="<script src='includes/js/newgroup.js'></script>";
 	}else{
 		$creargrupo="";
+		$modalcrear="";
+		$scriptcreargrupo="";
 	}
+	
+	$modalinvitacionesgrupo="";
+	
+	
+	
+	
 	
 	$htmlmenu="<nav class='navbar navbar-expand-lg navbar-dark bg-primary ' role='navigation'>
 									

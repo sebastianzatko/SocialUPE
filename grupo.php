@@ -1,7 +1,28 @@
 <?php
 	session_start();
 	if(isset($_SESSION["id"]) and isset($_SESSION["email"])){
-		
+		if(isset($_GET["idgroup"])){
+			require_once("blogic/Grupo.php");
+			$groups=new Grupo();
+			$listadegrupos=$groups->obtenerGrupos((int)$_SESSION["id"]);
+			$gruposdeusuario=array();
+			foreach($listadegrupos as $grupo){
+				array_push($listadegrupos,$grupo[0]);
+			}
+			$idgrupo=$_GET["idgroup"];
+			if(in_array($idgrupo,$listadegrupos)){
+				require_once("blogic/Publicacion.php");
+				$publicacionrepiola=new Publicacion();
+				$listadepublicaciones=$publicacionrepiola->obtenerpublicaciones($idgrupo,1);
+				require_once("blogic/User.php");
+				$user=new b_user();
+				$row=$user->obtenerDatosDeUsuario((int)$_SESSION["id"]);
+				$datospersonales=mysqli_fetch_assoc($row);
+				$miembrosynombre=$groups->obtenerdatosdelgrupo($idgrupo);
+			}else{
+				header("Location:home.php");
+			}
+		}
 	}else{
 		
 		header("Location:login.php");
@@ -29,6 +50,10 @@
 				require "templates/menu.php";
     
 				echo $htmlmenu;
+				if($user->puede("crear grupos",$_SESSION["permisos"])){
+					echo $modalcrear;
+					echo $scriptcreargrupo;
+				}
 			
 			?>
 		
@@ -55,16 +80,26 @@
 					</div>
 					<div class="card hija" style="width: 18rem;">
 					  <div class="card-body">
-						<h5 class="card-title">Miembros (6)</h5>
+						<h5 class="card-title">Miembros <?php echo count($miembrosynombre) ?></h5>
 						
 					  </div>
 					  <ul class="list-group list-group-flush">
-						<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Juan Garrido</b><span class="unhiglight">(Profesor)</span></li>
-						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Julieta Maria</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Diego Torres</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Sandra Solari</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Martin Dominguez</b><span class="unhiglight">(Alumno)</span></li>
-						<li class="list-group-item"><button type="button" data-toggle="modal" data-target="#EliminarMiembro" class="close">&times;</button><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/><b>Mario Casas</b><span class="unhiglight">(Alumno)</span></li>
+						<?php
+							foreach($miembrosynombre as $miembro){
+								if($user->puede("eliminar miembros del grupo",$_SESSION["permisos"])){
+									if($miembro[1]==$_SESSION["id"]){
+										echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
+									}
+									else{
+										echo "<li class='list-group-item'><button type='button' data-toggle='modal' data-iduser='".$miembro[1]."' data-target='#EliminarMiembro' class='close'>&times;</button><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
+									}
+								}else{
+									echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
+								}
+								
+							}
+						?>
+						
 						<li class="list-group-item"><button data-toggle="modal" data-target="#Invitar_Alumno" class="btn btn-success">Invitar alumnos</button></li>
 					  </ul>
 					</div>
@@ -86,16 +121,19 @@
 					<div class="row hija">
 						<div class="card">
 							<div class="card-body">
-								<center><h2 class="card-title">Seguridad e Higiene</h2></center>
+								<?php
+									echo "<center><h2 class='card-title'>".$miembrosynombre[0][0]."</h2></center>";
+								?>
+								
 							</div>
 						</div>
 					</div>
 					<div class="row hija">
 						<div class="card">
-							<form id="formpublicacion">
+							<form id="formpublicacion" action="includes/php/processnewpublicacion.php" method="POST">
 								
 									<div class="card-body">
-										<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+										<textarea name="contenido" cols="64" rows="10" id="publicacion" name="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
 									</div>
 									<div class="card-footer">
 										<input type="submit" class="btn btn-primary pull-right" value="Compartir" id="publicarestado"/>
@@ -130,60 +168,52 @@
 						</div>
 					</div>
 					
+					<?php
+						require_once("blogic/Comentario.php");
+						$comments=new Comentario();
+						
+						
+						
+						
+						
+						foreach($listadepublicaciones as $publications){
+							$comentariesofpublicacions=$comments->obtenercomentarios($publications[0]);
+							$comentarios="";
+							foreach($comentariesofpublicacions as $comment){
+								$comentarios=$comentarios."<li class='list-group-item' data-idcomentario='".$comment[0]."'><img src='".$comment[2]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/> <b>".$comment[3]." ".$comment[4]."</b> ".$comment[1]." <div class='pull-right'><span class='unhiglight'>".$comment[5]."</span></div></li>";
+							}
+							echo "<div class='row hija'>
+									<div class='card'>
+									  <div class='card-header'>
+										
+										<img src='".$publications[5]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/>
+										
+										
+										<b>".$publications[3]." ".$publications[4]."</b>
+										<span class='unhiglight pull-right'>".$publications[2]."</span>
+									  </div>
+									  <div class='card-body'>
+										<div class='pull-right'></div>
+										<p class='card-text'>".$publications[1]."</p>
+										
+									  </div>
+									  <ul class='list-group list-group-flush comentarios'>
+										".$comentarios."
+										<li class='list-group-item'>
+										
+											<form class='comentarito' action='includes/php/processcomentar.php' method='POST'>
+											<textarea data-idpublicacion='".$publications[0]."' name='contenido' cols='64' rows='10' id='publicacion' class='form-control message' style='height: 62px; overflow: hidden;' placeholder='What's on your mind ?'></textarea>
+											<div class='pull-right'><input type='submit' class='btn btn-primary pull-right' value='Comentar' id='publicarestado'/></div>
+											</form>
+										</li>
+									  </ul>
+									</div>
+								</div>";
+						}
 					
 					
-					<div class="row hija">
-						<div class="card">
-						  <div class="card-header">
-							
-							<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
-							
-							
-							<b>Mario Casas</b>
-							<span class="unhiglight pull-right">19/03/2017</span>
-						  </div>
-						  <div class="card-body">
-							<div class="pull-right"></div>
-							<p class="card-text">Profe no voy a poder ir el viernes</p>
-							
-						  </div>
-						  <ul class="list-group list-group-flush comentarios">
-							<li class="list-group-item"><img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/> <b>Juan Garrido</b> Hablame por privado <div class="pull-right"><span class="unhiglight">19/03/2017</span></div></li>
-							<li class="list-group-item">
-								<form>
-								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
-								<div class="pull-right"><input type="submit" class="btn btn-primary pull-right" value="Comentar" id="publicarestado"/></div>
-								</form>
-							</li>
-						  </ul>
-						</div>
-					</div>
+					?>
 					
-					<div class="row hija">
-						<div class="card">
-						  <div class="card-header">
-							
-							<img src="files/images/default.png" class="img-thumbnail rounded img-fluid img-circle profilepic"/>
-							
-							
-							<b>Juan Garrido</b>
-							<span class="unhiglight pull-right">19/03/2017</span>
-						  </div>
-						  <div class="card-body">
-							<div class="pull-right"></div>
-							<p class="card-text">Estimados en los proximos dias estare subiendo un archivo con la introduccion a la materia</p>
-							
-						  </div>
-						  <ul class="list-group list-group-flush comentarios">
-							<li class="list-group-item">
-								<form>
-								<textarea name="contenido" cols="64" rows="10" id="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
-								<div class="pull-right"><input type="submit" class="btn btn-primary pull-right" value="Comentar" id="publicarestado"/></div>
-								</form>
-							</li>
-						  </ul>
-						</div>
-					</div>
 					
 				</div>
 				
@@ -309,6 +339,7 @@
 								</div>
 							</div>
 		</div>
-
+		<script src="includes/js/comentar.js"></script>
+		<script src="includes/js/publicar.js"></script>
 	</body>
 </html>

@@ -145,7 +145,7 @@
         }
         public function obtenerDatosDeUsuario($idUsuario){
             require "conexion/conection.php";
-            $sql="SELECT idUSUARIO,NOMBRE,APELLIDO,TELEFONO,MAIL,FOTO_DE_PERFIL,DIRECCION,LOCALIDAD,PROVINCIA FROM USUARIOS WHERE idUSUARIO=?";
+            $sql="SELECT nombre,apellido,email,fotoperfil FROM usuario WHERE id_usuario=?";
             if($stmt=$mysqli->prepare($sql)){
                 $stmt->bind_param("i",$idUsuario);
                 $stmt->execute();
