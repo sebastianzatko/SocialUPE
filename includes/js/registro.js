@@ -29,20 +29,20 @@ $(document).ready(function(){
         var validacion=$("#Registro").validate({
 
             rules:{
-                Nombre:{required:true, pattern:/^([a-zA-Z]{2,})$/},
-                Apellido:{required:true, pattern:/^([a-zA-Z]{2,})$/},
-                email:{required:true, email:true},
+                Nombre:{required:true, pattern:/^([a-zA-Z]{2,})$/,minlength:4,maxlength:45},
+                Apellido:{required:true, pattern:/^([a-zA-Z]{2,})$/,minlength:4,maxlength:45},
+                email:{required:true, email:true,minlength:10,maxlength:200},
                 NumeroDocumento:{required:true, number:true, minlength:7, maxlength:8},
-                contraseña:{ required:true},
+                contraseña:{ required:true,minlength:8,maxlength:120},
 
             },
 
             messages:{
-                Nombre:{required:" El nombre es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras"},
-                Apellido:{required:" El Apellido es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras"},
-                email:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com"},
+                Nombre:{required:" El nombre es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras",minlength:"El nombre debe tener mas de 4 caracteres",maxlength:"El nombre debe tener menos de 45 caracteres"},
+                Apellido:{required:" El Apellido es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras",minlength:"El apellido debe tener mas de 4 caracteres",maxlength:"El apellido debe tener menos de 45 caracteres"},
+                email:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com",minlength:"El email debe tener mas de 10 caracteres",maxlength:"El email debe tener menos de 200 caracteres"},
                 NumeroDocumento:{required:" El Documento es requisito obligatorio ", number:"Solo se pueden ingresar numeros", minlength:"Debe tener mas de 7 numeros", maxlength:"Debe tener menos de 8 digitos"},
-                contrasena:{required:" La contraseña es requisito obligatorio "},
+                contrasena:{required:" La contraseña es requisito obligatorio ",minlength:"La contraseña debe tener mas de 8 caracteres",maxlength:"La contraseña debe tener menos de 120 caracteres"},
             },
         
         })

@@ -33,10 +33,10 @@
 							<form action="includes/php/processlogin.php" method="POST" id="frmLogin"accept-charset="UTF-8" role="form">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="correoelectronico@ejemplo.com" name="email" type="email" required>
+									<input class="form-control" placeholder="correoelectronico@ejemplo.com" name="email" type="email" minlength="10" maxlength="200" required>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+									<input class="form-control" placeholder="Contraseña" name="password" type="password" value="" minlength="8" maxlength="120" required>
 								</div>
 								
 								<div class="checkbox">

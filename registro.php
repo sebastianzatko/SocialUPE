@@ -32,21 +32,21 @@
                                     <div class="form-group">
                                         
                                         <label for="">Nombre</label>
-                                        <input type="text" name="Nombre" class="form-control" placeholder="Juanito" size="35" pattern="^([a-zA-Z]{2,})$" required >
+                                        <input type="text" name="Nombre" class="form-control" placeholder="Juanito" minlength="4" maxlength="45" pattern="^([a-zA-Z]{2,})$" required >
                                         
         
                                         <label for="">Apellido</label>
-                                        <input type="text" id="Apellido" name="Apellido" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
+                                        <input type="text" id="Apellido" name="Apellido" class="form-control" placeholder="Arcoiris" minlength="4" maxlength="45" pattern="^([a-zA-Z]{2,})$" required>
         
                                         <label for="">Email</label>
-                                        <input class="form-control" type="email" placeholder="yoelarcoiris@yahoo.com" name="email" id="email" required>
+                                        <input class="form-control" type="email" placeholder="yoelarcoiris@yahoo.com" name="email" minlength="10" maxlength="200" id="email" required>
 
         
                                         <label class="titulo"  for="NumDoc">Numero Documento</label>
                                         <input type="text" placeholder="205789632" name="NumeroDocumento" class="form-control" id="NumDoc" required minlength="7" maxlength="8">
         
                                         <label for="">Contraseña</label>
-                                        <input type="password" name="contrasena" class="form-control" required>
+                                        <input type="password" name="contrasena" class="form-control" minlength="8" maxlength="120" required>
 										<br>
 										<label for="file-upload" class="custom-file-upload">
 											<i class="fas fa-camera btn btn-success"></i> Foto de perfil

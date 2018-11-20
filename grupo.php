@@ -175,7 +175,7 @@
 							<form id="formpublicacion" action="includes/php/processnewpublicacion.php" method="POST">
 								
 									<div class="card-body">
-										<textarea name="contenido" cols="64" rows="10" id="publicacion" name="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
+										<textarea name="contenido" required minlength="1" maxlength="200" cols="64" rows="10" id="publicacion" name="publicacion" class="form-control message" style="height: 62px; overflow: hidden;" placeholder="What's on your mind ?"></textarea>
 									</div>
 									<div class="card-footer">
 										<input type="submit" class="btn btn-primary pull-right" value="Compartir" id="publicarestado"/>
@@ -221,7 +221,7 @@
 											<li class='list-group-item'>
 											
 												<form class='comentarito' action='includes/php/processcomentar.php' method='POST'>
-												<textarea data-idpublicacion='".$publications[0]."' name='contenido' cols='64' rows='10' id='publicacion' class='form-control message' style='height: 62px; overflow: hidden;' placeholder='What's on your mind ?'></textarea>
+												<textarea required minlength=1 maxlength=200 data-idpublicacion='".$publications[0]."' name='contenido' cols='64' rows='10' id='publicacion' class='form-control message' style='height: 62px; overflow: hidden;' placeholder='What's on your mind ?'></textarea>
 												<div class='pull-right'><input type='submit' class='btn btn-primary pull-right' value='Comentar' id='publicarestado'/></div>
 												</form>
 											</li>

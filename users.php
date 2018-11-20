@@ -43,12 +43,14 @@
 				<div class="col-md-12">
 					<table class="table table-striped table-condensed table-responsive full-width">
 						  <thead>
-						  <tr>
+						  <tr >
 							  <th>Imagen de perfil</th>
 							  <th>Nombre</th>
-							  <th>Fecha de ingreso</th>
-							  <th>Tipo</th>
-							  <th>Estado</th>
+							  <div class="col d-none d-sm-block">
+							  <th >Fecha de ingreso</th>
+							  <th >Tipo</th>
+							  <th >Estado</th>
+							  </div>
 							  <th>Desactivar cuenta</th>  
 						  </tr>
 					  </thead>   
@@ -65,7 +67,7 @@
 									$estado="<span class=' p-3 mb-2 text-white bg-primary'>".$usuario[4]."</span>";
 									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
 								}
-								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><td>".$usuario[5]."</td><td>".$usuario[6]."</td><td>".$estado."</td><td>".$botton."</td></tr>";
+								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><div class= col d-none d-sm-block><td>".$usuario[5]."</td><td>".$usuario[6]."</td><td>".$estado."</td></div><td>".$botton."</td></tr>";
 							}
 						?>
 						

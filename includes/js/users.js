@@ -24,17 +24,21 @@ $(document).ready(function(){
         var validacion = $("#frmNuevoAdmin").validate({
 
             rules:{
-                lblNombreAdmin:{required:true, pattern:/^([A-Za-z]+)$/, minlength:2, maxlength:15},
-                lblEmailAdmin:{required:true, email:true},
-                lblContraseñaAdmin:{required:true},
+                lblNombreAdmin:{required:true, pattern:/^([A-Za-z]+)$/, minlength:4, maxlength:45},
+                lblApellidoAdmin:{required:true, pattern:/^([a-zA-Z]{2,})$/,minlength:4,maxlength:45},
+                lblEmailAdmin:{required:true, email:true,minlength:10,maxlength:200},
+                lblNumDocAdmin:{required:true, number:true, minlength:7, maxlength:8},
+                lblContraseñaAdmin:{ required:true,minlength:8,maxlength:120},
 
             },
 
             messages:{
                 lblNombreAdmin:{required:" El nombre es obligatorio ",pattern:"El campo solo acepta letras",
-                                minlength:"El nombre debe contener mas de 2 caracteres", maxlength:"El nombre debe contener menos de 15 caracteres"},
-                lblEmailAdmin:{required:"El email es obligatorio", email:"El email debe tener el siguiente formato algo@ejemplo.com ",},
-                lblContraseñaAdmin:{required:"La contraseña es obligatoria"},
+                                minlength:"El nombre debe contener mas de 4 caracteres", maxlength:"El nombre debe contener menos de 45 caracteres"},
+                lblApellidoAdmin:{required:" El Apellido es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras",minlength:"El apellido debe tener mas de 4 caracteres",maxlength:"El apellido debe tener menos de 45 caracteres"},
+                lblEmailAdmin:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com",minlength:"El email debe tener mas de 10 caracteres",maxlength:"El email debe tener menos de 200 caracteres"},
+                lblNumDocAdmin:{required:" El Documento es requisito obligatorio ", number:"Solo se pueden ingresar numeros", minlength:"Debe tener mas de 7 numeros", maxlength:"Debe tener menos de 8 digitos"},
+                lblContraseñaAdmin:{required:" La contraseña es requisito obligatorio ",minlength:"La contraseña debe tener mas de 8 caracteres",maxlength:"La contraseña debe tener menos de 120 caracteres"},
                 
                 
             },
@@ -91,18 +95,21 @@ $(document).ready(function(){
         var validacion=$("#frmNuevoProfesor").validate({
             
             rules:{
-                lblNombreProf:{required:true, pattern:/^([A-Za-z]+)$/, minlength:2, maxlength:15},
-                lblEmailProf:{required:true, email:true},
-                lblContraseñaProf:{required:true},
-                imagen:{required:false},
+                lblNombreProf:{required:true, pattern:/^([A-Za-z]+)$/, minlength:4, maxlength:45},
+                lblApellidoProf:{required:true, pattern:/^([a-zA-Z]{2,})$/,minlength:4,maxlength:45},
+                lblEmailProf:{required:true, email:true,minlength:10,maxlength:200},
+                lblNumDocProf:{required:true, number:true, minlength:7, maxlength:8},
+                lblContraseñaProf:{ required:true,minlength:8,maxlength:120},
 
             },
 
             messages:{
                 lblNombreProf:{required:" El nombre es obligatorio ",pattern:"El campo solo acepta letras",
-                                minlength:"El nombre debe contener mas de 2 caracteres", maxlength:"El nombre debe contener menos de 15 caracteres"},
-                lblEmailProf:{required:"El email es obligatorio", email:"El email debe tener el siguiente formato algo@ejemplo.com ",},
-                lblContraseñaProf:{required:"La contraseña es obligatoria"},
+                minlength:"El nombre debe contener mas de 4 caracteres", maxlength:"El nombre debe contener menos de 45 caracteres"},
+                lblApellidoProf:{required:" El Apellido es requisito obligatorio ", pattern:"Debe ser 1 palabra de mas de 2 letras",minlength:"El apellido debe tener mas de 4 caracteres",maxlength:"El apellido debe tener menos de 45 caracteres"},
+                lblEmailProf:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com",minlength:"El email debe tener mas de 10 caracteres",maxlength:"El email debe tener menos de 200 caracteres"},
+                lblNumDocProf:{required:" El Documento es requisito obligatorio ", number:"Solo se pueden ingresar numeros", minlength:"Debe tener mas de 7 numeros", maxlength:"Debe tener menos de 8 digitos"},
+                lblContraseñaProf:{required:" La contraseña es requisito obligatorio ",minlength:"La contraseña debe tener mas de 8 caracteres",maxlength:"La contraseña debe tener menos de 120 caracteres"},
                 
                 
             },

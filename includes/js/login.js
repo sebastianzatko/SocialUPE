@@ -23,14 +23,16 @@ $(document).ready(function(){
         var validacion=$("#frmLogin").validate({
 
             rules:{
-                email:{required:true, email:true},
-                password:{required:true},
+                email:{required:true, email:true,minlength:10,maxlength:200},
+                password:{required:true,minlength:8,maxlength:120},
+
 
             },
 
             messages:{
-                email:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com"},
-                password:{required:"La contraseña es requisito obligatorio"},
+                email:{required:" El Email es requisito obligatorio ",email:"El email debe tener el formato de email ej: ejemplo@algo.com",minlength:"El email debe tener mas de 10 caracteres",maxlength:"El email debe tener menos de 200 caracteres"},
+                password:{required:"La contraseña es requisito obligatorio",minlength:"La contraseña debe tener mas de 8 caracteres",maxlength:"La contraseña debe tener menos de 120 caracteres"},
+               
             },
 
             
