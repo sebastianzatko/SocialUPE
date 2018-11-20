@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
     //Validaciones//
-    $("#btnCrearGrupo").click(function(){
+    $("#btnCrearGrupo").submit(function(){
 	
         jQuery.validator.setDefaults({
             debug:true,
@@ -23,7 +23,7 @@ $(document).ready(function(){
         $("#frmCrearGrupo").validate({
 
             rules:{
-                nombreGrupo:{required:true, pattern:/^([A-Za-z0-9]+)$/, minlength:5, maxlength:30},
+                nombreGrupo:{required:true, pattern:/^([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})|([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})$/, minlength:5, maxlength:30},
                 carrera:{required:false}
 
             },

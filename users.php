@@ -92,15 +92,30 @@
 						</div>
 						<div class="modal-body">
 						
-								<form action="" class="form-group" id="frmNuevoAdmin">
+								<form action="includes/php/processnewadmin.php" enctype="multipart/form-data" method="POST" class="form-group" id="frmNuevoAdmin">
 									<div class="form-group">
 										<label class="form-label">Nombre</label><input required name="lblNombreAdmin" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
+									</div>
+									<div>
+										<label for="">Apellido</label>
+                                       	<input type="text" id="lblApellidoAdmin" name="lblApellidoAdmin" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
 									</div>
 									<div class="form-group">
 										<label class="form-label">Correo electronico</label><input required name="lblEmailAdmin" class="form-control"  type="email"/>
 									</div>
+									<div>
+										<label class="titulo"  for="NumDoc">Numero Documento</label>
+                                      	<input type="text" placeholder="205789632" name="lblNumDocAdmin" class="form-control" id="lblNumDocAdmin" required minlength="7" maxlength="8">
+									</div>
 									<div class="form-group">
 										<label class="form-label">Contraseña</label><input required name="lblContraseñaAdmin" class="form-control" type="password"/>
+									</div>
+									<div class="form-group">
+										<label for="file-upload" class="custom-file-upload">
+										<i class="fas fa-camera btn btn-success"></i>Foto de perfil
+														  
+										</label>
+										<input id="file-upload" name="imagen" type="file"/>
 									</div>
 									
 								
@@ -165,6 +180,7 @@
 								</div>
 				</div>
 		</div>
+		<script src="includes/js/users.js"></script>
 		<script src="includes/js/botonesusuarios.js">
 		</script>
 	</body>

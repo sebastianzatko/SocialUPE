@@ -43,7 +43,7 @@
 							<form accept-charset="UTF-8" role="form" id="frmCrearGrupo">
 							<fieldset>
 								<div class="form-group">
-									<label>Nombre del grupo: </label><input class="form-control" placeholder="Nombre del grupo" name="nombreGrupo" type="text" required>
+									<label>Nombre del grupo: </label><input class="form-control" pattern="^([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})|([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})+\s+([a-zA-Z]{4,})$" placeholder="Nombre del grupo" name="nombreGrupo" type="text" required>
 								</div>
 								<div class="form-group">
 									<label>Carrera del grupo:</label>
