@@ -3,15 +3,17 @@
 	if(isset($_SESSION["permisos"]) and $_SESSION["id"]){
 		require_once("../../blogic/User.php");
 		$user=new b_user();
-		if($user->puede("subir archivos",$_SESSION["permisos"])){
+		if($user->puede("eliminar archivos",$_SESSION["permisos"])){
 			
-			if(isset($_FILES["archivo"]) and $_FILES["archivo"]["name"]!="" and (isset($_POST["idgrupo"]) and is_numeric($_POST["idgrupo"]))){
-				$archivo=$_FILES["archivo"];
-				$idgrupo=$_POST["idgrupo"];
+			if(isset($_POST["idarchivo"]) and is_numeric($_POST["idarchivo"]) and isset($_POST["ruta"])){
+				$idarchivo=$_POST["idarchivo"];
+				$ruta=$_POST["ruta"];
+				
 				require_once("../../blogic/Archivo.php");
 				$filezilla=new Archivo();
-				if($filezilla->subirarchivo($archivo,(int)$idgrupo,(int)$_SESSION["id"])){
-					echo "Archivo subido con exito";
+				if($filezilla->eliminararchivo($idarchivo)){
+					unlink("../../".$ruta);
+					echo "Archivo eliminado con exito";
 				}else{
 					echo "Faltan datos necesarios para realizar la operacion";
 				}

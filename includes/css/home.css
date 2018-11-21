@@ -2,6 +2,26 @@ a{
     color:#47649F;
 }
 
+ul#results{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+ 
+ul#results li a {
+	color: #000;
+	background: #ccc;
+	display: block;
+	text-decoration: none;
+}
+ul#results li a:hover {
+	background: #aaa;
+}
+.resultadobusquedas{
+	margin-left:6px;
+}
+
 h2,h3,h4,h5,h6{
 	font-family: 'Source Sans Pro', sans-serif;
 }

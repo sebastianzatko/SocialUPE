@@ -48,7 +48,6 @@ $("#formpublicacion").submit(function(){
 			success: function (data) {
 			if(data=="Se ha publicado con exito"){
 				$.notify(data, "success");
-				
 			}else{
 				$.notify(data, "error");
 				console.log(data);

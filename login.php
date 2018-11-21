@@ -33,21 +33,21 @@
 							<form action="includes/php/processlogin.php" method="POST" id="frmLogin"accept-charset="UTF-8" role="form">
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="correoelectronico@ejemplo.com" name="email" type="email" minlength="10" maxlength="200" required>
+									<input class="form-control" value="<?php if(isset($_COOKIE["emailusuario"])) { echo $_COOKIE["emailusuario"]; } ?>" placeholder="correoelectronico@ejemplo.com" name="email" type="email" minlength="10" maxlength="200" required>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Contraseña" name="password" type="password" value="" minlength="8" maxlength="120" required>
+									<input class="form-control" value="<?php if(isset($_COOKIE["contrasenausuario"])) { echo $_COOKIE["contrasenausuario"]; } ?>" placeholder="Contraseña" name="password" type="password" value="" minlength="8" maxlength="120" required>
 								</div>
 								
 								<div class="checkbox">
 									<label>
-										<input name="remember" type="checkbox" value="Remember Me"> Recuerdame
+										<input name="remember" value="1" type="checkbox" <?php if(isset($_COOKIE["emailusuario"])) { echo  "checked";  } ?> value="Remember Me"> Recuerdame
 									</label>
 								</div>
 								<input class="btn btn-lg btn-success btn-block" type="submit" value="Ingresar" id="logear">
 							</fieldset>
 							</form>
-							<a href="" data-toggle="modal" data-target="#Recuperar_contraseña"><small>Olvide mi contraseña</small></a>
+							<!--<a href="" data-toggle="modal" data-target="#Recuperar_contraseña"><small>Olvide mi contraseña</small></a>-->
 							  <hr/>
 
 							<a href="registro.php"><small>No tienes una cuenta? Registrate con tu codigo</small></a>

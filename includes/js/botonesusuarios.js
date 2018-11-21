@@ -1,7 +1,7 @@
 //boton reactivar
 $(".btn btn-primary").click(function(){
 	$(this).prop('disabled', true);
-	var idusuario=$(this).$(this).attr("data-iduser");
+	var idusuario=$(this).attr("data-iduser");
 	$.ajax({
 		data:{ id : idusuario},
 		url:"includes/php/processreactivarusuario.php",
@@ -27,7 +27,7 @@ $(".btn btn-primary").click(function(){
 //boton banear
 $(".btn btn-danger").click(function(){
 	$(this).prop('disabled', true);
-	var idusuario=$(this).$(this).attr("data-iduser");
+	var idusuario=$(this).attr("data-iduser");
 	$.ajax({
 		data:{ id : idusuario},
 		url:"includes/php/processbanearusuario.php",

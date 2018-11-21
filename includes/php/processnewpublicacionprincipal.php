@@ -6,7 +6,6 @@
 		if(($user->puede("publicar en muro principal",$_SESSION["permisos"]))){
 			if(isset($_POST["publicacion"])){
 				$publicacion=$_POST["publicacion"];
-				
 				if((strlen($publicacion)<=500 and strlen($publicacion)>=5)){
 					require_once("../../blogic/Publicacion.php");
 					$publicacionxd=new Publicacion();

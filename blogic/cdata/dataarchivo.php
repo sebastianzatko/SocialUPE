@@ -17,8 +17,25 @@ class dataArchivo{
 			return false;
 		}
 	}
-	public function eliminararchivo(){
-		
+	public function eliminararchivo($idarchivo){
+		$con = new Conexion();
+		$sql="UPDATE `archivo` SET habilitado=0 WHERE id_archivo=?";
+		$query=$con->prepare($sql);
+		if($query->execute(array($idarchivo))){
+			require_once('datapublicacion.php');
+			$publi=new datapublicacion();
+			$sql2="SELECT id_publicacion FROM archivo WHERE id_archivo=?";
+			$query2=$con->prepare($sql2);
+			$query2->execute(array($idarchivo));
+			$result=$query2->fetchAll();
+			$idpublicacion=$result[0]['id_publicacion'];
+			$publi->borrarpublicacion($idpublicacion);
+			return true;
+		}
+		else{
+			print_r($query->errorInfo());
+			return false;
+		}
 	}
 	public function obtenerarchivos($id_grupo){
 		$con = new Conexion();

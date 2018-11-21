@@ -28,6 +28,8 @@
 			}else{
 				header("Location:home.php");
 			}
+		}else{
+			header("Location:home.php");
 		}
 	}else{
 		
@@ -59,6 +61,14 @@
 				if($user->puede("crear grupos",$_SESSION["permisos"])){
 					echo $modalcrear;
 					echo $scriptcreargrupo;
+				}
+				if($user->puede("publicar en muro principal",$_SESSION["permisos"])){
+					echo $modalpublicacionprincipal;
+					echo $scriptpublicarprincipal;
+				}
+				if($user->puede("aceptar solicitudes de grupo",$_SESSION["permisos"])){
+					echo $modalinvitacionesgrupo;
+					echo $scriptaceptarinvitaciongrupo;
 				}
 			
 			?>
@@ -188,7 +198,7 @@
 										$iconclass="far fa-file fa-2x";
 									}
 									if($user->puede("eliminar archivos",$_SESSION["permisos"])){
-										echo "<li class='list-group-item'><a href='".$archivo[1]."'><div class='archivo card-link'><button type='button' data-toggle='modal' data-idarchivo='".$archivo[0]."' data-target='#EliminarArchivo' class='close'>&times;</button><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
+										echo "<li class='list-group-item file-".$archivo[0]."'><div class='archivo card-link'><button type='button' data-ruta='".$archivo[1]."' data-idarchivo='".$archivo[0]."' class='close borrararchivo'>&times;</button><a href='".$archivo[1]."'><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
 									}else{
 										echo "<li class='list-group-item'><a href='".$archivo[1]."'><div class='archivo card-link'><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
 									}
@@ -223,7 +233,7 @@
 										echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
 									}
 									else{
-										echo "<li class='list-group-item'><button type='button' data-toggle='modal' data-iduser='".$miembro[1]."' data-target='#EliminarMiembro' class='close'>&times;</button><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
+										echo "<li class='list-group-item ".$miembro[1]."'><button type='button'  data-iduser='".$miembro[1]."' class='close denegarusuario'>&times;</button><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
 									}
 								}else{
 									echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
@@ -245,7 +255,7 @@
 						<?php
 							if(count($listadesolicitudes)!=0){
 								foreach($listadesolicitudes as $solicitudes){
-									echo "<li class='list-group-item'><img src='".$solicitudes[3]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$solicitudes[1]." ".$solicitudes[2]."</b><button type='button' data-idusuario='".$solicitudes[0]."' class='btn btn-primary'><i class='far fa-thumbs-up'></i> Aceptar</button><button data-idusuario='".$solicitudes[0]."' type='button' class='btn btn-danger pull-right'><i class='fas fa-ban'></i> Rechazar</button></li>";
+									echo "<li class='list-group-item ".$solicitudes[0]."'><div class='row' id=''><img src='".$solicitudes[3]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$solicitudes[1]." ".$solicitudes[2]."</b></div><div class='row'><button type='button' data-idusuario='".$solicitudes[0]."' class='btn btn-primary confirmacionusuario'><i class='far fa-thumbs-up'></i> Aceptar</button><button data-iduser='".$solicitudes[0]."' type='button' class='btn btn-danger pull-right denegarusuario'><i class='fas fa-ban'></i> Rechazar</button></div></li>";
 								}
 							}else{
 								echo "<li class='list-group-item'>No hay solicitudes</li>";
@@ -288,7 +298,7 @@
 										$iconclass="far fa-file fa-2x";
 									}
 									if($user->puede("eliminar archivos",$_SESSION["permisos"])){
-										echo "<li class='list-group-item'><a href='".$archivo[1]."'><div class='archivo card-link'><button type='button' data-toggle='modal' data-idarchivo='".$archivo[0]."' data-target='#EliminarArchivo' class='close'>&times;</button><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
+										echo "<li class='list-group-item file-".$archivo[0]."'><div class='archivo card-link'><button type='button' data-ruta='".$archivo[1]."' data-idarchivo='".$archivo[0]."' class='close borrararchivo'>&times;</button><a href='".$archivo[1]."'><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
 									}else{
 										echo "<li class='list-group-item'><a href='".$archivo[1]."'><div class='archivo card-link'><p class='card-text'><i class='".$iconclass."'></i> ".$archivo[2]."</p></div></a></li>";
 									}
@@ -318,7 +328,7 @@
 										echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
 									}
 									else{
-										echo "<li class='list-group-item'><button type='button' data-toggle='modal' data-iduser='".$miembro[1]."' data-target='#EliminarMiembro' class='close'>&times;</button><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
+										echo "<li class='list-group-item ".$miembro[1]."'><button type='button' data-iduser='".$miembro[1]."' class='close denegarusuario'>&times;</button><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
 									}
 								}else{
 									echo "<li class='list-group-item'><img src='".$miembro[4]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$miembro[2]." ".$miembro[3]."</b><span class='unhiglight'>(".$miembro[5].")</span></li>";
@@ -340,7 +350,7 @@
 						<?php
 							if(count($listadesolicitudes)!=0){
 								foreach($listadesolicitudes as $solicitudes){
-									echo "<li class='list-group-item'><img src='".$solicitudes[3]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$solicitudes[1]." ".$solicitudes[2]."</b><button type='button' data-idusuario='".$solicitudes[0]."' class='btn btn-primary'><i class='far fa-thumbs-up'></i> Aceptar</button><button data-idusuario='".$solicitudes[0]."' type='button' class='btn btn-danger pull-right'><i class='fas fa-ban'></i> Rechazar</button></li>";
+									echo "<li class='list-group-item ".$solicitudes[0]."'><div class='row' id=''><img src='".$solicitudes[3]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/><b>".$solicitudes[1]." ".$solicitudes[2]."</b></div><div class='row'><button type='button' data-idusuario='".$solicitudes[0]."' class='btn btn-primary confirmacionusuario'><i class='far fa-thumbs-up'></i> Aceptar</button><button data-iduser='".$solicitudes[0]."' type='button' class='btn btn-danger pull-right denegarusuario'><i class='fas fa-ban'></i> Rechazar</button></div></li>";
 								}
 							}else{
 								echo "<li class='list-group-item'>No hay solicitudes</li>";
@@ -455,11 +465,15 @@
 								
 						</div>
 						<div class="modal-body">
-						
-								<form action="" class="form-group">
-								<label for="">Ingrese Email</label>
-								<input type="email" class="form-control">
-								
+								<style>	
+									
+								</style>
+								<form action="includes/php/processnewinvitacionagrupo.php" class="form-group" id="invitarnuevousuario">
+									<label for="">Ingrese Email</label>
+									<input type="email" class="form-control" autocomplete="off" id="emailuser" name="email">
+									<ul id="results" class="form-control">
+										
+									</ul>
 								
 
 						</div>
@@ -500,65 +514,12 @@
 									</div>
 				</div>
 
-				<div id="EliminarArchivo" class="modal fade">
-
-					<div class="modal-dialog">
-			
-							<div class="modal-content">
-											
-									<div class="modal-header">
-
-										<h4 class="modal-title">Eliminar Archivo</h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-											
-											
-									</div>
-									<div class="modal-body">
-										<h3>	<i class="fas fa-exclamation fa-3x"></i>¿Esta seguro que desea eliminar?</h3>
-											
-											
-											
-			
-									</div>
-									<div class="modal-footer">
-											<button  type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
-											<button type="button" class="btn btn-success">SI	</button>
-											 
-										</div>
-									</div>
-								</div>
-			</div>
-
-			<div id="EliminarMiembro" class="modal fade">
-
-				<div class="modal-dialog">
 		
-						<div class="modal-content">
-										
-								<div class="modal-header">
-
-									<h4 class="modal-title">Eliminar Miembro</h4>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-										
-										
-								</div>
-								<div class="modal-body">
-									<h3>	<i class="fas fa-exclamation fa-3x"></i>¿Esta seguro que desea eliminar?</h3>
-										
-										
-										
-		
-								</div>
-								<div class="modal-footer">
-										<button  type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
-										<button type="button" class="btn btn-success">SI	</button>
-										 
-									</div>
-								</div>
-							</div>
-		</div>
 		<script src="includes/js/archivo.js"></script>
 		<script src="includes/js/comentar.js"></script>
 		<script src="includes/js/publicar.js"></script>
+		<script src="includes/js/confirmarydenearpermiso.js"></script>
+		<script src="includes/js/borrararchivo.js"></script>
+		<script src="includes/js/invitarusuarioagrupo.js"></script>
 	</body>
 </html>

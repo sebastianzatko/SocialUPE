@@ -31,6 +31,9 @@
                             <form action="includes/php/processnewuser.php" enctype="multipart/form-data" id="Registro" class="form-group" method="POST">
                                     <div class="form-group">
                                         
+										<label for="">Codigo de ingreso</label>
+                                        <input type="text" name="Token" class="form-control" placeholder="x4as5" minlength="5" maxlength="5" required >
+										
                                         <label for="">Nombre</label>
                                         <input type="text" name="Nombre" class="form-control" placeholder="Juanito" minlength="4" maxlength="45" pattern="^([a-zA-Z]{2,})$" required >
                                         

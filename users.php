@@ -4,6 +4,10 @@
 		require_once("blogic/User.php");
 		$user=new b_user();
 		$listadeusuarios=$user->obtenerusuarios("","","");
+		require_once("blogic/Token.php");
+		$tokenzilla=new Token();
+		$listadetokens=$tokenzilla->obtenertokenes();
+		$listadetiposusuario=$tokenzilla->obtenertiposusuario();
 	}else{
 		
 		header("Location:login.php");
@@ -24,7 +28,6 @@
 		<script type="application/javascript" src="includes/js/notify.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" href="includes/css/home.css">
-		<link rel="stylesheet" href="includes/css/users.css">
 		<script src="includes/js/users.js"></script>
 	</head>
 	<body>
@@ -36,23 +39,34 @@
 					echo $modalcrear;
 					echo $scriptcreargrupo;
 				}
+				if($user->puede("publicar en muro principal",$_SESSION["permisos"])){
+					echo $modalpublicacionprincipal;
+					echo $scriptpublicarprincipal;
+				}
+				if($user->puede("aceptar solicitudes de grupo",$_SESSION["permisos"])){
+					echo $modalinvitacionesgrupo;
+					echo $scriptaceptarinvitaciongrupo;
+				}
 			
 			?>
 		
 		<div class="container">
 			<div class="row">
+					<div class="pull-right">
+						<button class="btn btn-success" data-toggle="modal" data-target="#tokens"><i class="fas fa-plus"></i> Tokens</button>
+					</div>
+			</div>
+			<div class="row">
 				<div class="col-md-12">
 					<table class="table table-striped table-condensed table-responsive full-width">
 						  <thead>
 						  <tr >
-							  <th>Imagen de perfil</th>
-							  <th>Nombre</th>
-							  <div class="mobile">
-							  <th >Fecha de ingreso</th>
-							  <th >Tipo</th>
-							  <th >Estado</th>
-							  </div>
-							  <th>Desactivar cuenta</th>  
+							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Imagen de perfil</th>
+							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Nombre</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Fecha de ingreso</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Tipo</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Estado</th>
+							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Desactivar cuenta</th>  
 						  </tr>
 					  </thead>   
 					  <tbody>
@@ -68,7 +82,7 @@
 									$estado="<span class=' p-3 mb-2 text-white bg-primary'>".$usuario[4]."</span>";
 									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
 								}
-								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><td class= mobile>".$usuario[5]."</td><td class= mobile>".$usuario[6]."</td><td class= mobile>".$estado."</td><td>".$botton."</td></tr>";
+								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><div class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[5]."</td><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[6]."</td><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$estado."</td></div><td>".$botton."</td></tr>";
 							}
 						?>
 						
@@ -78,109 +92,66 @@
 				</div>
 				
 			</div>
-			<div class="row">
-					<div class="pull-right">
-						<button class="btn btn-success" data-toggle="modal" data-target="#nuevoprofesor"><i class="fas fa-plus"></i> Nuevo Profesor</button>
-						<button class="btn btn-success" data-toggle="modal" data-target="#nuevoadministrador"><i class="fas fa-plus"></i> Nuevo Administrador</button>
-					</div>
-			</div>
 			
 			
-		<div id="nuevoadministrador" class="modal fade">
-
-		<div class="modal-dialog">
-
-				<div class="modal-content">
-								
-						<div class="modal-header">
-								<h3 class="modal-title">Nuevo Administrador</h3>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								
-						</div>
-						<div class="modal-body">
-						
-								<form action="includes/php/processnewadmin.php" enctype="multipart/form-data" method="POST" class="form-group" id="frmNuevoAdmin">
-									<div class="form-group">
-										<label class="form-label">Nombre</label><input required name="lblNombreAdmin" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
-									</div>
-									<div>
-										<label for="">Apellido</label>
-                                       	<input type="text" id="lblApellidoAdmin" name="lblApellidoAdmin" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
-									</div>
-									<div class="form-group">
-										<label class="form-label">Correo electronico</label><input required name="lblEmailAdmin" class="form-control"  type="email"/>
-									</div>
-									<div>
-										<label class="titulo"  for="NumDoc">Numero Documento</label>
-                                      	<input type="text" placeholder="205789632" name="lblNumDocAdmin" class="form-control" id="lblNumDocAdmin" required minlength="7" maxlength="8">
-									</div>
-									<div class="form-group">
-										<label class="form-label">Contraseña</label><input required name="lblContraseñaAdmin" class="form-control" type="password"/>
-									</div>
-									<div class="form-group">
-										<label for="file-upload" class="custom-file-upload">
-										<i class="fas fa-camera btn btn-success"></i>Foto de perfil
-														  
-										</label>
-										<input id="file-upload" name="imagen" type="file"/>
-									</div>
-									
-								
-								
-
-						</div>
-						<div class="modal-footer">
-								<button  type="submit" id="btnAgregarAdmin" class="btn btn-primary">Agregar Administrador</button>
-								</form> 
-						</div>
-				</div>
-		</div>
+			
+		
 		</div>
 		
-				<div id="nuevoprofesor" class="modal fade">
+				<div id="tokens" class="modal fade">
 
 					<div class="modal-dialog">
 			
 							<div class="modal-content">
 											
 									<div class="modal-header">
-											<h3 class="modal-title">Nuevo Profesor</h3>
+											<h3 class="modal-title">Tokens disponibles</h3>
 											<button type="button" class="close" data-dismiss="modal">&times;</button>
 											
 									</div>
 									<div class="modal-body">
-											<form action="includes/php/processnewprofesor.php" enctype="multipart/form-data"  class="form-group" id="frmNuevoProfesor" method="POST">
-												<div class="form-group">
-													<label class="form-label">Nombre</label>
-													<input required name="lblNombreProf" class="form-control" pattern="^([a-zA-Z]{2,})$" type="text"/>
-												</div>
-												<div>
-													<label for="">Apellido</label>
-                                       			 	<input type="text" id="lblApellidoProf" name="lblApellidoProf" class="form-control" placeholder="Arcoiris" pattern="^([a-zA-Z]{2,})$" required>
-												</div>
-												<div class="form-group">
-													<label class="form-label">Correo electronico</label>
-													<input required name="lblEmailProf" class="form-control" type="email"/>
-												</div>
-												<div>
-													<label class="titulo"  for="NumDoc">Numero Documento</label>
-                                      				  <input type="text" placeholder="205789632" name="lblNumDocProf" class="form-control" id="lblNumDocProf" required minlength="7" maxlength="8">
-												</div>
-												<div class="form-group">
-													<label class="form-label">Contraseña</label><input required name="lblContraseñaProf" class="form-control" type="password"/>
-												</div>
-												<div class="form-group">
-													<label for="file-upload" class="custom-file-upload">
-														<i class="fas fa-camera btn btn-success"></i>Foto de perfil
-														  
-													</label>
-													<input id="file-upload" name="imagen" type="file"/>
-												</div>
-												
+											<div class="col-md-12">
+												<table class="table table-striped table-condensed table-responsive full-width">
+													<thead>
+														<tr>
+															<th class="col-md-3">Tipo de usuario</th>
+															<th class="col-md-1">Token</th>
+															
+														</tr>
+													</thead>
+													
+													<tbody>
+														<?php
+															if(count($listadetokens)!=0){
+																foreach($listadetokens as $token){
+																	echo "<tr><td>".$token[1]."</td><td>".$token[0]."</td></tr>";
+																}
+															}else{
+																echo "<tr><td>No hay tokenes habilitados :(</td></tr>";
+															}
+														?>
+													</tbody>
+												</table>
+											</div>	
 			
 									</div>
 									<div class="modal-footer">
-											<button  type="submit" id="btnAgregarProf" class="btn btn-primary">Agregar Profesor</button>
+											<form action="includes/php/processnewtoken.php" class="form-group" method="POST" id="newtoken">
+												<div class="form-inline">
+												<label>Tipo de usuario: </label>
+												<select name="usertype" id="chosen">
+													<?php
+														foreach($listadetiposusuario as $tipousuario){
+															echo "<option value='".$tipousuario[0]."'>".$tipousuario[1]."</option>";
+														}
+													
+													?>
+												</select>
+												<br>
+												</div>
+												<div class="form-inline">
+													<button  type="submit" class="btn btn-primary">Agregar Nuevo Token</button>
+												</div>
 											</form> 
 										</div>
 									</div>
@@ -188,6 +159,8 @@
 				</div>
 		</div>
 		<script src="includes/js/botonesusuarios.js">
+		</script>
+		<script src="includes/js/newtoken.js">
 		</script>
 	</body>
 </html>

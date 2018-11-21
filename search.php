@@ -91,7 +91,7 @@
 										echo "<div class='row hija'>
 												<div class='card'>
 												  <div class='card-header'>
-													 <span class='unhiglight'>Fecha de creacion: ".$grupoencontrado[4]."</span>
+													 <span class='unhiglight'>Fecha de creacion: ".$grupoencontrado[3]."</span>
 													 <div class='pull-right'>
 													</div>
 												  </div>
@@ -117,7 +117,7 @@
 											  </div>
 											  <div class='card-body'>
 												<h3 class='card-title'>".$grupoencontrado[1]."</h3>
-												<button type='button' data-idgrupo='".$grupoencontrado[0]."' class='btn btn-success'>Solicitar Acceso</button>
+												<button type='button' data-idgrupo='".$grupoencontrado[0]."' class='btn btn-success access'>Solicitar Acceso</button>
 												<div class='pull-right'>
 													<h5 class='card-title'>".$grupoencontrado[2]."</h5>
 												</div>
@@ -144,5 +144,6 @@
 			
 			</div>
 		</div>
+		<script type="text/javascript" src="includes/js/solicitar.js" ></script>
 	</body>
 </html>

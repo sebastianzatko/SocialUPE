@@ -15,7 +15,9 @@
 			
 		}
 		public function eliminararchivo($idarchivo){
-			
+			$file=new dataArchivo();
+			$result=$file->eliminararchivo($idarchivo);
+			return $result;
 		}
 		public function obtenerarchivos($idgrupo){
 			$filezillaxD=new dataArchivo();

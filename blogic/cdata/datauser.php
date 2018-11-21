@@ -23,7 +23,7 @@
                 echo $error;
              }
         }
-        public function registrarNuevoUsuario($nombre,$apellido,$fotoperfil,$mail,$password,$tipousuario){
+        public function registrarNuevoUsuario($nombre,$apellido,$fotoperfil,$mail,$password,$token){
             require "conexion/conection.php";
             $randomsalt=uniqid('', true);;
             $hashcontrasena=sha1($password.$randomsalt);
@@ -31,8 +31,14 @@
 
             $bytesxD = openssl_random_pseudo_bytes(32);
             $hashxD = base64_encode($bytesxD);
-
+			
             $validacionHash=$hashxD;
+			require "datatoken.php";
+			$tokensito=new datatoken();
+			$tipousuario=$tokensito->usartoken($token);
+			if($tipousuario==false){
+				return false;
+			}
 
             $sql="INSERT INTO `usuario` (`nombre`,`apellido`,`email`,`contrasena`,`fotoperfil`,`hash_confirmacion`,`estado`,`habilitado`,`tipousuario`) VALUES (?,?,?,?,?,?,1,0,?)";
             if($stmt=$mysqli->prepare($sql)){
@@ -208,6 +214,28 @@
 			}else{
 				return "No se ha podido modificar el usuario";
 			}
+		}
+		
+		public function obtenerusuarioconmail($email,$idgrupo,$limite){
+			$abuscar="%".$email."%";
+			$grupo=(int)$idgrupo;
+			$limitacion=(int)$limite;
+			require "conexion/conection.php";
+			$sql="SELECT usuario.id_usuario,usuario.fotoperfil,usuario.nombre,usuario.apellido,usuario.email FROM `usuario` WHERE usuario.email LIKE ? and usuario.habilitado=1 and usuario.tipousuario=1 and usuario.id_usuario not in (select miembro.id_usuario from miembro where miembro.id_grupo=?) LIMIT ?";
+			if($stmt=$mysqli->prepare($sql)){
+				$stmt->bind_param('sii',$abuscar,$grupo,$limitacion);
+    			$stmt->execute();
+				$datos=array();
+				$resultado2=$stmt->get_result();
+				while($row2 = $resultado2->fetch_assoc()) {
+				   array_push($datos,[$row2["id_usuario"],$row2["fotoperfil"],$row2["nombre"],$row2["apellido"],$row2["email"]]);
+				}
+				return $datos;
+			}else{
+                $error = $mysqli->errno . ' ' . $mysqli->error;
+                echo $error;
+                exit();
+            }
 		}
 
     }

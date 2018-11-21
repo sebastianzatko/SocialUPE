@@ -52,6 +52,20 @@ $(document).ready(function(){
 				success: function (data) {
 					if(data=="Se ha creado un grupo correctamente"){
 						$.notify(data, "success");
+						$.ajax({
+							data:{},
+							url:"includes/php/obtenergruposdeusuario.php",
+							type:"POST",
+							success: function (data) {
+								var datos=jQuery.parseJSON( data );
+								$(".gruposdeusuario").empty();
+								for(var y=0;y<datos.length;y++){
+									if(datos[y][2]=="1"){
+										$(".gruposdeusuario").append("<li class='list-group-item'><a href='grupo.php?idgroup="+datos[y][0]+"' class='card-link'>"+datos[y][1]+"</a></li>");
+									}
+								}
+							}
+						});
 					}else{
 					    $.notify(data, "error");
 					    console.log(data);

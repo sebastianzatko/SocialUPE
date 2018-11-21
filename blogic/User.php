@@ -27,7 +27,7 @@
                 }
             }
         }
-        public function registrar($nombre,$apellido,$mail,$contrasena,$fotoperfil,$tipousuario){
+        public function registrar($nombre,$apellido,$mail,$contrasena,$fotoperfil,$token){
            
             include "cdata/datauser.php";
 
@@ -56,7 +56,7 @@
 				
 				
 				
-				$datos->registrarNuevoUsuario($nombre,$apellido,$archivo,$mail,$contrasena,$tipousuario);
+				$datos->registrarNuevoUsuario($nombre,$apellido,$archivo,$mail,$contrasena,$token);
 				return true;
 			}else{
 				
@@ -91,10 +91,17 @@
             return $resultado;
         }
 		
+		public function obtenerusuarioconmail($email,$idgrupo,$limite){
+			
+            include "cdata/datauser.php";
+            $datos=new d_user;
+            $resultado=$datos->obtenerusuarioconmail($email,$idgrupo,$limite);
+            return $resultado;
+        }
+		
 		public function logout(){
 			session_unset($_SESSION["id"]);
-			session_unset($_SESSION["nombre"]);
-			session_unset($_SESSION["foto"]);
+			session_unset($_SESSION["permisos"]);
 			session_destroy();
 		}
 		

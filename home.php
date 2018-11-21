@@ -39,11 +39,19 @@
 			
 			<?php
 				require "templates/menu.php";
-    
 				echo $htmlmenu;
 				if($user->puede("crear grupos",$_SESSION["permisos"])){
 					echo $modalcrear;
 					echo $scriptcreargrupo;
+				}
+				if($user->puede("publicar en muro principal",$_SESSION["permisos"])){
+					echo $modalpublicacionprincipal;
+					echo $scriptpublicarprincipal;
+				}
+
+				if($user->puede("aceptar solicitudes de grupo",$_SESSION["permisos"])){
+					echo $modalinvitacionesgrupo;
+					echo $scriptaceptarinvitaciongrupo;
 				}
 			
 			?>
@@ -128,7 +136,7 @@
 								
 								
 							  
-							  <ul class="list-group list-group-flush">
+							  <ul class="list-group list-group-flush gruposdeusuario">
 								<?php
 									foreach($listadegrupos as $grupo){
 										if($grupo[2]=="1"){
@@ -162,7 +170,7 @@
 						
 						
 					  
-					  <ul class="list-group list-group-flush">
+					  <ul class="list-group list-group-flush gruposdeusuario ">
 						<?php
 							foreach($listadegrupos as $grupo){
 								if($grupo[2]=="1"){

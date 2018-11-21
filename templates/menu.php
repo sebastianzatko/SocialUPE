@@ -1,19 +1,50 @@
 <?php
-	require_once("./blogic/User.php");
-	$user=new b_user();
-	if($user->puede("buscar grupos",$_SESSION["permisos"])){
+	$userz=new b_user();
+	if($userz->puede("buscar grupos",$_SESSION["permisos"])){
 		$buscador="<form class='form-inline' action='search.php' method='GET'><div class='form-inline'><input class='form-control mr-sm-2' name='busqueda' type='search' placeholder='Buscar Grupos' aria-label='Buscar Grupos'><button class='btn btn-outline-light my-2 my-sm-0' type='submit'>Buscar</button></div></form>";
 	}else{
 		$buscador="";
 	}
 	
-	if($user->puede("manejar usuarios",$_SESSION["permisos"])){
+	if($userz->puede("manejar usuarios",$_SESSION["permisos"])){
 		$users="<li class='px-3 py-2'><a href='users.php'>Usuarios</a></li>";
 	}else{
 		$users="";
 	}
+	if($userz->puede("aceptar solicitudes de grupo",$_SESSION["permisos"])){
+		$invitacionesgrupo="<li class='px-3 py-2'><a data-toggle='modal' href='' data-target='#invitacionesdegrupo' >Invitaciones</a></li>";
+		$modalinvitacionesgrupo="<div id='invitacionesdegrupo' class='modal fade'>
+					
+						<div class='modal-dialog'>
+				
+								<div class='modal-content'>
+												
+										<div class='modal-header'>
+												<h3 class='modal-title'>Tus invitaciones a grupo</h3>
+												<button type='button' class='close' data-dismiss='modal'>&times;</button>
+												
+										</div>
+										<div class='modal-body'>
+												<div class='list-group list-group-flush' id='solicitudesagrupos'>
+												
+												</div>
+										</div>
+										<div class='modal-footer'>
+												
+											</div>
+										</div>
+									</div>
+					</div>";
+		
+		$scriptaceptarinvitaciongrupo="<script src='includes/js/solicitudesdegrupo.js'></script>";
+		
+	}else{
+		$modalinvitacionesgrupo="";
+		$scriptaceptarinvitaciongrupo="";
+		$invitacionesgrupo="";
+	}
 	
-	if($user->puede("crear grupos",$_SESSION["permisos"])){
+	if($userz->puede("crear grupos",$_SESSION["permisos"])){
 		$creargrupo="<li class='px-3 py-2'><a data-toggle='modal' href='' data-target='#nuevogrupo' >Crear Grupo</a></li>";
 		require "blogic/Carrera.php";
 		$carreras=new Carrera();
@@ -63,9 +94,9 @@
 		$scriptcreargrupo="";
 	}
 	
-	$modalinvitacionesgrupo="";
 	
-	if($user->puede("publicar en muro principal",$_SESSION["permisos"])){
+	
+	if($userz->puede("publicar en muro principal",$_SESSION["permisos"])){
 		$modalpublicacionprincipal="
 		<div id='nuevapublicacionprincipal' class='modal fade'>
 
@@ -87,7 +118,7 @@
 													
 										</div>
 										<div class='modal-footer'>
-												<button  type='submit' id='btnCrearpublicacion' class='btn btn-lg btn-success btn-block'>Crear nuevo grupo</button>
+												<button  type='submit' id='btnCrearpublicacion' class='btn btn-lg btn-success btn-block'>Publicar</button>
 												</fieldset>
 												</form> 
 											</div>
@@ -130,9 +161,9 @@
 								<button type='button' id='dropdownMenu1' data-toggle='dropdown' class='btn btn-outline-secondary dropdown-toggle text-white'>Opciones <span class='caret'></span></button>
 								<ul class='dropdown-menu dropdown-menu-right mt-2'>
 									".$users."
-									
+									".$invitacionesgrupo."
 									".$creargrupo."
-									
+									".$publicar."
 									 <li class='px-3 py-2'>
 									
 										 <a href='login.php'>Cerrar Sesion</a>

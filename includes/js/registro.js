@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     //Validaciones//
     $("#Registro").submit(function(){
-		event.preventDefault()
+		event.preventDefault();
         jQuery.validator.setDefaults({
             debug:true,
             succes:"valid",

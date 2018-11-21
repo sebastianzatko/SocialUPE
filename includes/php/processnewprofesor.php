@@ -3,7 +3,7 @@
 	if(isset($_SESSION["permisos"]) and $_SESSION["id"]){
 		require_once("../../blogic/User.php");
 		$user=new b_user();
-		if($user->puede("manejar usuarios",$_SESSION["permisos"]){
+		if($user->puede("manejar usuarios",$_SESSION["permisos"])){
 			if(isset($_POST["lblNombreProf"]) and isset($_POST["lblApellidoProf"]) and isset($_POST["lblEmailProf"]) and isset($_POST["lblNumDocProf"]) and isset($_POST["lblContraseñaProf"])){
 				$nombre=$_POST["lblNombreProf"];
 				$apellido=$_POST["lblApellidoProf"];

@@ -4,7 +4,7 @@ $("#formpublicacionprincipal").submit(function(){
 	var $_GET=[];
 	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){$_GET[name]=value;});
 	var idgrupo=$_GET['idgroup'];
-	var publicacion=$. trim($("#publicacion").val());
+	var publicacion=$. trim($("#publicacionprincipal").val());
 
 	jQuery.validator.setDefaults({
 		debug:true,

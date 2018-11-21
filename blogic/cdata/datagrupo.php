@@ -46,7 +46,7 @@ class datagrupo{
 	}
 	public function obtenerredatosgrupo($idgrupo){
 		$con = new Conexion();
-		$sql="SELECT grupo.nombregrupo,miembro.id_usuario,usuario.id_usuario,usuario.nombre,usuario.apellido,usuario.fotoperfil,rol.descripcion FROM `grupo`,miembro,usuario,rol WHERE grupo.id_grupo=? AND miembro.id_grupo=grupo.id_grupo AND usuario.id_usuario=miembro.id_usuario AND usuario.tipousuario=rol.id_rol";
+		$sql="SELECT grupo.nombregrupo,miembro.id_usuario,usuario.id_usuario,usuario.nombre,usuario.apellido,usuario.fotoperfil,rol.descripcion FROM `grupo`,miembro,usuario,rol WHERE grupo.id_grupo=? AND miembro.id_grupo=grupo.id_grupo AND usuario.id_usuario=miembro.id_usuario AND usuario.tipousuario=rol.id_rol AND miembro.habilitado=1";
 		$query=$con->prepare($sql);
 		if($query->execute(array($idgrupo))){
 			$result = $query->fetchAll();
@@ -71,9 +71,9 @@ class datagrupo{
 				`miembro`,
 				usuario
 			WHERE
-				miembro.id_usuario = usuario.id_usuario AND miembro.habilitado = 0 AND miembro.id_solicitante <> ? AND miembro.id_grupo = ? AND miembro.id_solicitante NOT IN (SELECT usuario.id_usuario FROM usuario where usuario.tipousuario=3)";
+				miembro.id_usuario = usuario.id_usuario AND miembro.habilitado = 0  and miembro.id_grupo=? AND miembro.id_solicitante NOT IN (SELECT usuario.id_usuario FROM usuario,miembro where miembro.id_usuario=usuario.id_usuario AND usuario.tipousuario=3 and miembro.id_grupo=? and miembro.habilitado=1)";
 		$query=$con->prepare($sql);
-		if($query->execute(array($idusuario,$idgrupo))){
+		if($query->execute(array($idgrupo,$idgrupo))){
 			$result = $query->fetchAll();
 			$datos = array();
 			foreach($result as $row){
@@ -88,7 +88,7 @@ class datagrupo{
 	}
 	public function buscargrupo($texto,$idusuario){
 		$con = new Conexion();
-		$sql="SELECT `grupo`.`id_grupo`, `grupo`.`nombregrupo`, carrera.descripcion, `grupo`.`fechadecreacion` FROM `grupo`,carrera  WHERE grupo.nombregrupo LIKE ? AND grupo.carrera=carrera.id_carrera AND grupo.idgrupo NOT IN (SELECT miembro.`id_grupo` FROM `miembro` WHERE miembro.id_usuario=$ AND miembro.habilitado=2) AND grupo.id_grupo<>10";
+		$sql="SELECT `grupo`.`id_grupo`, `grupo`.`nombregrupo`, carrera.descripcion, `grupo`.`fechadecreacion` FROM `grupo`,carrera  WHERE grupo.nombregrupo LIKE ? AND grupo.carrera=carrera.id_carrera AND grupo.id_grupo<>10 AND grupo.id_grupo NOT IN (SELECT miembro.`id_grupo` FROM `miembro` WHERE miembro.id_usuario=? AND miembro.habilitado=2) ORDER BY grupo.fechadecreacion DESC";
 		$query=$con->prepare($sql);
 		if($query->execute(array("%".$texto."%",$idusuario))){
 			$result = $query->fetchAll();
@@ -118,6 +118,17 @@ class datagrupo{
 			print_r($query->errorInfo());
 			return false;
 		}
+	}
+	public function datamodificaracesso($idusuario,$idgrupo,$habilitado){
+		$con = new Conexion();
+		$sql="UPDATE miembro SET miembro.habilitado=? WHERE miembro.id_usuario=? AND miembro.id_grupo=?";
+		$query=$con->prepare($sql);
+		if($query->execute(array($habilitado,$idusuario,$idgrupo))){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 }
 
