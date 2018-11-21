@@ -49,7 +49,7 @@
                     
                     //$s_email = new changeromail();
                    
-                    //$url = 'http://beta.changero.online/verify.php?mail='.$mail.'&codigo='.$validacionHash;
+                    //$url = 'http://changero.online/norobandoespacio/verify.php?mail='.$mail.'&codigo='.$validacionHash;
                     
                     //$nombreusuario = $nombre.' '.$apellido;
                    
@@ -73,7 +73,7 @@
         }
         public function verificarCuenta($email,$condigoDeValidacion){
             require "conexion/conection.php";
-            $sql="SELECT `id_usuario`,`hash_confirmacion`` FROM `usuario` WHERE `email`=? LIMIT 1";
+            $sql="SELECT `id_usuario`,`hash_confirmacion` FROM usuario WHERE email=? LIMIT 1";
             if($stmt=$mysqli->prepare($sql)){
                 $stmt->bind_param("s",$email);
                 $stmt->execute();

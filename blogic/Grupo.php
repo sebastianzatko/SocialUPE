@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include_once('cdata/datagrupo.php');
 class Grupo{
 	public function obtenerGrupos($idusuario){
@@ -36,13 +37,12 @@ class Grupo{
 			}
 			$tokenusable=$resultado[0][0];
 			//require_once('cdata/email2.php');
-			//$s_email = new changeromail();
+			//$s_email = new changeromail2();
                    
-			//$url = 'http://beta.changero.online/verify.php?mail='.$mail.'&codigo='.$validacionHash;
 			
-			//$nombreusuario = $nombre.' '.$apellido;
+			//$nombreusuario = "Usuario";
 		   
-			//$s_email->validaremail($mail,$nombreusuario,$url);
+			//$s_email->validaremail($email,$nombreusuario,$tokenusable);
 			return true;
 			
 		}

@@ -2,14 +2,18 @@
 require_once('conexion/conectionpdo.php');
 class dataArchivo{
 	public function subirarchivo($rutaarchivo,$nombrearchivo,$idgrupo,$idusuario){
+		$notificacion="<a href='".$rutaarchivo."'><i class='far fa-file fa-3x'></i> ".$nombrearchivo."</p></a>";
+		$con2 = new Conexion();
+		$sql2="INSERT INTO publicacion (publicaciondetalle,id_usuario,id_grupo,habilitado) VALUES (?,?,?,1)";
+		$query2=$con2->prepare($sql2);
+		$query2->execute(array($notificacion,$idusuario,$idgrupo));
+		$idpublicacion=$con2->lastInsertId();
 		$con = new Conexion();
-		$sql="INSERT INTO archivo (nombrearchivo,rutaarchivo,id_grupo,habilitado) VALUES (?,?,?,1)";
+		$sql="INSERT INTO archivo (nombrearchivo,rutaarchivo,id_grupo,habilitado,id_publicacion) VALUES (?,?,?,1,?)";
 		$query=$con->prepare($sql);
-		if($query->execute(array($nombrearchivo,$rutaarchivo,$idgrupo))){
-			$notificacion="<a href='".$rutaarchivo."'><i class='far fa-file fa-3x'></i> ".$nombrearchivo."</p></a>";
-			require_once('datapublicacion.php');
-			$publi=new datapublicacion();
-			$publi->publicar($idusuario,$idgrupo,$notificacion);
+		if($query->execute(array($nombrearchivo,$rutaarchivo,$idgrupo,$idpublicacion))){
+			
+			
 			return true;
 		}
 		else{

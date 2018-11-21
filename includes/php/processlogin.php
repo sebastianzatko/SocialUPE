@@ -6,6 +6,7 @@
 			require_once ("../../blogic/User.php");
 			$usuario=new b_user;
 			if($usuario->ingresar($email,$contrasena)){
+				ob_start();
 				if(!empty($_POST["remember"])){
 					setcookie ("emailusuario",$email,time()+ (10 * 365 * 24 * 60 * 60));  
 					setcookie ("contrasenausuario",$contrasena,time()+ (10 * 365 * 24 * 60 * 60));
@@ -19,7 +20,9 @@
 					 setcookie ("contrasenausuario","");  
 					}  
 				}
+				
 				echo "Ha ingresado correctamente";
+				ob_end_flush();
 				
 			}else{
 				echo "El correo o la contraseña son incorrectas";

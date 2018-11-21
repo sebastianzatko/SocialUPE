@@ -69,7 +69,7 @@
 				
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active col-sm-12 col-xs-12" id="muro">
-						<div class="col-sm-12 col-xs-12">
+						<div class="col-sm-12 col-xs-12 publicacions">
 							<?php
 								require_once("blogic/Comentario.php");
 								$comments=new Comentario();
@@ -184,7 +184,7 @@
 					  </ul>
 					</div>
 				</div>
-				<div class="col-md-6 principal">
+				<div class="col-md-6 principal publicacions">
 					
 					<?php
 						require_once("blogic/Comentario.php");
