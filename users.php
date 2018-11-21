@@ -24,6 +24,7 @@
 		<script type="application/javascript" src="includes/js/notify.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" href="includes/css/home.css">
+		<link rel="stylesheet" href="includes/css/users.css">
 		<script src="includes/js/users.js"></script>
 	</head>
 	<body>
@@ -46,7 +47,7 @@
 						  <tr >
 							  <th>Imagen de perfil</th>
 							  <th>Nombre</th>
-							  <div class="col d-none d-sm-block">
+							  <div class="mobile">
 							  <th >Fecha de ingreso</th>
 							  <th >Tipo</th>
 							  <th >Estado</th>
@@ -67,7 +68,7 @@
 									$estado="<span class=' p-3 mb-2 text-white bg-primary'>".$usuario[4]."</span>";
 									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
 								}
-								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><div class= col d-none d-sm-block><td>".$usuario[5]."</td><td>".$usuario[6]."</td><td>".$estado."</td></div><td>".$botton."</td></tr>";
+								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><td class= mobile>".$usuario[5]."</td><td class= mobile>".$usuario[6]."</td><td class= mobile>".$estado."</td><td>".$botton."</td></tr>";
 							}
 						?>
 						
