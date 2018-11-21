@@ -61,11 +61,11 @@
 					<table class="table table-striped table-condensed table-responsive full-width">
 						  <thead>
 						  <tr >
-							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Imagen de perfil</th>
+							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell ">Imagen de perfil</th>
 							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Nombre</th>
-							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Fecha de ingreso</th>
-							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Tipo</th>
-							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell">Estado</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell mobile">Fecha de ingreso</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell mobile">Tipo</th>
+							  <th class="d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell mobile ">Estado</th>
 							  <th class="d-sm-table-cell d-xs-table-cell d-md-table-cell d-lg-table-cell d-xl-table-cell">Desactivar cuenta</th>  
 						  </tr>
 					  </thead>   
@@ -82,7 +82,7 @@
 									$estado="<span class=' p-3 mb-2 text-white bg-primary'>".$usuario[4]."</span>";
 									$botton="<button data-iduser='".$usuario[7]."' type='button' class='btn btn-danger'><i class='fas fa-ban'></i> Desactivar</button>";
 								}
-								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><div class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[5]."</td><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[6]."</td><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$estado."</td></div><td>".$botton."</td></tr>";
+								echo "<tr><td><img src='".$usuario[0]."' class='img-thumbnail rounded img-fluid img-circle profilepic'/></td><td>".$usuario[1]." ".$usuario[2]."</td><div class='mobile d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'><td class='d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[5]."</td><td class='mobile d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$usuario[6]."</td><td class='mobile d-sm-none d-xs-none d-md-none d-lg-none d-xl-table-cell'>".$estado."</td></div><td>".$botton."</td></tr>";
 							}
 						?>
 						
@@ -120,7 +120,7 @@
 														</tr>
 													</thead>
 													
-													<tbody>
+													<tbody id="nuevalistadetokens">
 														<?php
 															if(count($listadetokens)!=0){
 																foreach($listadetokens as $token){
