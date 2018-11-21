@@ -1,5 +1,5 @@
 
-$("#formpublicacion").submit(function(){
+$("#formpublicacionprincipal").submit(function(){
 	event.preventDefault();
 	var $_GET=[];
 	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){$_GET[name]=value;});
@@ -23,7 +23,7 @@ $("#formpublicacion").submit(function(){
 		
 	});
 
-	var validacion=$("#formpublicacion").validate({
+	var validacion=$("#formpublicacionprincipal").validate({
 
 		rules:{
 			publicacion:{required:true, minlength:1,maxlength:200},
@@ -41,7 +41,7 @@ $("#formpublicacion").submit(function(){
 
 	if(validacion){
 		$.ajax({
-			data:{ publicacion : publicacion,id_grupo:idgrupo },
+			data:{ publicacion : publicacion },
 			url:this.action,
 			type:"POST",
 			

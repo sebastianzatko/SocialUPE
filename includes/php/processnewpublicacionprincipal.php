@@ -3,15 +3,14 @@
 	if(isset($_SESSION["permisos"]) and $_SESSION["id"]){
 		require_once ("../../blogic/User.php");
 		$user=new b_user;
-		if(($user->puede("publicar en muro de grupo",$_SESSION["permisos"]))){
-			if(isset($_POST["publicacion"]) and isset($_POST["id_grupo"])){
+		if(($user->puede("publicar en muro principal",$_SESSION["permisos"]))){
+			if(isset($_POST["publicacion"])){
 				$publicacion=$_POST["publicacion"];
-				$idgrupo=$_POST["id_grupo"];
 				
-				if((strlen($publicacion)<500 and strlen($publicacion)>5 and (int)$idgrupo!=10)){
+				if((strlen($publicacion)<=500 and strlen($publicacion)>=5)){
 					require_once("../../blogic/Publicacion.php");
 					$publicacionxd=new Publicacion();
-					if($publicacionxd->publicar((int)$_SESSION["id"],(int)$idgrupo,$publicacion)){
+					if($publicacionxd->publicar((int)$_SESSION["id"],10,$publicacion)){
 						echo "Se ha publicado con exito";
 						
 					}else{

@@ -30,7 +30,7 @@ class datagrupo{
 	
 	public function obtenerGrupos($idusuario){
 		$con = new Conexion();
-		$sql="SELECT grupo.id_grupo,grupo.nombregrupo,miembro.habilitado FROM grupo,miembro WHERE grupo.id_grupo IN (SELECT grupo.id_grupo FROM grupo,miembro WHERE grupo.id_grupo=miembro.id_grupo AND miembro.id_usuario=? and miembro.habilitado<>2) AND grupo.id_grupo=miembro.id_grupo AND miembro.id_usuario=?";
+		$sql="SELECT grupo.id_grupo,grupo.nombregrupo,miembro.habilitado FROM grupo,miembro WHERE grupo.id_grupo IN (SELECT grupo.id_grupo FROM grupo,miembro WHERE grupo.id_grupo=miembro.id_grupo AND miembro.id_usuario=? and miembro.habilitado<>2) AND grupo.id_grupo=miembro.id_grupo AND miembro.id_usuario=? AND grupo.id_grupo<>10";
 		$query=$con->prepare($sql);
 		if($query->execute(array($idusuario,$idusuario))){
 			$result = $query->fetchAll();
@@ -86,11 +86,28 @@ class datagrupo{
 		}
 		 
 	}
-	public function buscargrupo($texto){
+	public function buscargrupo($texto,$idusuario){
 		$con = new Conexion();
-		$sql="SELECT `grupo`.`id_grupo`, `grupo`.`nombregrupo`, carrera.descripcion, `grupo`.`fechadecreacion` FROM `grupo`,carrera  WHERE grupo.nombregrupo LIKE ? AND grupo.carrera=carrera.id_carrera";
+		$sql="SELECT `grupo`.`id_grupo`, `grupo`.`nombregrupo`, carrera.descripcion, `grupo`.`fechadecreacion` FROM `grupo`,carrera  WHERE grupo.nombregrupo LIKE ? AND grupo.carrera=carrera.id_carrera AND grupo.idgrupo NOT IN (SELECT miembro.`id_grupo` FROM `miembro` WHERE miembro.id_usuario=$ AND miembro.habilitado=2) AND grupo.id_grupo<>10";
 		$query=$con->prepare($sql);
-		if($query->execute(array("%".$texto."%"))){
+		if($query->execute(array("%".$texto."%",$idusuario))){
+			$result = $query->fetchAll();
+			$datos = array();
+			foreach($result as $row){
+				array_push($datos,[$row["id_grupo"],$row["nombregrupo"],$row["descripcion"],$row["fechadecreacion"]]);
+			}
+			return $datos;
+		}else{
+			print_r($query->errorInfo());
+			return false;
+		}
+	}
+	
+	public function obtenersolicitudesdegrupo($idusuario){
+		$con = new Conexion();
+		$sql="SELECT `grupo`.`id_grupo`, `grupo`.`nombregrupo`, carrera.descripcion, `grupo`.`fechadecreacion` FROM `grupo`,carrera,miembro  WHERE  grupo.carrera=carrera.id_carrera  AND grupo.id_grupo<>10 AND miembro.id_grupo=grupo.id_grupo AND miembro.habilitado=0 AND miembro.id_usuario=? AND miembro.id_solicitante<>?";
+		$query=$con->prepare($sql);
+		if($query->execute(array($idusuario,$idusuario))){
 			$result = $query->fetchAll();
 			$datos = array();
 			foreach($result as $row){

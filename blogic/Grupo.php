@@ -36,9 +36,9 @@ class Grupo{
 		$data=$grupo->creargrupo($nombregrupo,$idcarrera,$idcreador);
 		return $data;
 	}
-	public function buscargrupo($textoabuscar){
+	public function buscargrupo($textoabuscar,$idusuario){
 		$grupo=new datagrupo();
-		$data=$grupo->buscargrupo($textoabuscar);
+		$data=$grupo->buscargrupo($textoabuscar,$idusuario);
 		return $data;
 	}
 	public function obtenersolicitudesagrupos($idusuario){

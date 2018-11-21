@@ -65,7 +65,45 @@
 	
 	$modalinvitacionesgrupo="";
 	
-	
+	if($user->puede("publicar en muro principal",$_SESSION["permisos"])){
+		$modalpublicacionprincipal="
+		<div id='nuevapublicacionprincipal' class='modal fade'>
+
+						<div class='modal-dialog'>
+				
+								<div class='modal-content'>
+												
+										<div class='modal-header'>
+												<h3 class='modal-title'>Publicar Noticia de la Universidad</h3>
+												<button type='button' class='close' data-dismiss='modal'>&times;</button>
+												
+										</div>
+										<div class='modal-body'>
+												<form id='formpublicacionprincipal' action='includes/php/processnewpublicacionprincipal.php' method='POST'>
+													<fieldset>
+														
+															<textarea required minlength='5' maxlength='500' cols='64' rows='10' id='publicacionprincipal' name='publicacionprincipal' class='form-control message' style='height: 62px; overflow: hidden;' placeholder='What's on your mind ?'></textarea>
+														
+													
+										</div>
+										<div class='modal-footer'>
+												<button  type='submit' id='btnCrearpublicacion' class='btn btn-lg btn-success btn-block'>Crear nuevo grupo</button>
+												</fieldset>
+												</form> 
+											</div>
+										</div>
+									</div>
+					</div>";
+		
+		
+		$publicar="<li class='px-3 py-2'><a data-toggle='modal' href='' data-target='#nuevapublicacionprincipal' >Publicar</a></li>";
+		$scriptpublicarprincipal="<script src='includes/js/newpublicarprincipal.js'></script>";
+		
+	}else{
+		$modalpublicacionprincipal="";
+		$publicar="";
+		$scriptpublicarprincipal="";
+	}
 	
 	
 	

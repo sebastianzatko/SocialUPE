@@ -7,7 +7,6 @@
 			if(isset($_POST["comentario"]) and isset($_POST["id_publicacion"])){
 				$comentario=$_POST["comentario"];
 				$idpublicacion=$_POST["id_publicacion"];
-				echo "aca lleog wachin";
 				require_once("../../blogic/Comentario.php");
 				$comentary=new Comentario();
 				if($comentary->comentar((int)$_SESSION["id"],(int)$idpublicacion,$comentario)){

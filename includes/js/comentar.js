@@ -4,9 +4,7 @@ $(".comentarito").submit(function(){
 	event.preventDefault();
 	var idpublicacion=$(this).find("textarea").attr("data-idpublicacion");
 	var comentario=$(this).find("textarea").val();
-	console.log(comentario);
-	console.log(idpublicacion);
-
+	
 	jQuery.validator.setDefaults({
 		debug:true,
 		succes:"valid",

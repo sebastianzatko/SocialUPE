@@ -33,7 +33,7 @@ $(document).ready(function(){
                 Apellido:{required:true, pattern:/^([a-zA-Z]{2,})$/,minlength:4,maxlength:45},
                 email:{required:true, email:true,minlength:10,maxlength:200},
                 NumeroDocumento:{required:true, number:true, minlength:7, maxlength:8},
-                contraseña:{ required:true,minlength:8,maxlength:120},
+                contrasena:{ required:true,minlength:8,maxlength:120},
 
             },
 

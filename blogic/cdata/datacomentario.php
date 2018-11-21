@@ -24,7 +24,7 @@ class datacomentario{
 					`comentario`,publicacion,usuario
 				WHERE
 					`comentario`.id_publicacion = publicacion.id_publicacion AND publicacion.id_publicacion = ? AND 
-					publicacion.id_usuario=usuario.id_usuario";
+					comentario.id_usuario=usuario.id_usuario";
 		$query=$con->prepare($sql);
 		if($query->execute(array($idpublicacion))){
 			$result = $query->fetchAll();

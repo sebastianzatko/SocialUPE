@@ -9,7 +9,7 @@
 				require_once("blogic/Grupo.php");
 				$grupo=new Grupo();
 				$listadegrupos=$grupo->obtenerGrupos((int)$_SESSION["id"]);
-				$listadegruposencontrados=$grupo->buscargrupo($texto);
+				$listadegruposencontrados=$grupo->buscargrupo($texto,(int)$_SESSION["id"]);
 				$listagrupospertenecientes=array();
 				if(count($listadegrupos)!=0){
 					foreach($listadegrupos as $groupe){

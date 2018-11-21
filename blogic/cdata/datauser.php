@@ -48,6 +48,10 @@
                     //$nombreusuario = $nombre.' '.$apellido;
                    
                     //$s_email->validaremail($mail,$nombreusuario,$url);
+					require ("datagrupo.php");
+					$agrupacion=new datagrupo();
+					$idusuario= $mysqli->insert_id;
+					$agrupacion->insertarengrupo((int)10,$idusuario,1,null);
 					return true;
                 }else{
                    $error = $mysqli->errno . ' ' . $mysqli->error;

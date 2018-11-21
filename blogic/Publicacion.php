@@ -15,6 +15,11 @@ class Publicacion{
 	public function eliminarpublicacion(){
 		
 	}
+	public function obtenerpublicacionesrelacionadasconusuario($idusuario,$paginacion){
+		$publicaciones=new datapublicacion();
+		$data=$publicaciones->obtenerpublicacionesdeusuario($idusuario,$paginacion);
+		return $data;
+	}
 }
 
 
